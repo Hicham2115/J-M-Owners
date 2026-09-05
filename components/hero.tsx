@@ -43,10 +43,9 @@ export function Hero() {
           </a>
           <a
             className="inline-flex min-h-14 items-center justify-center gap-3 rounded-sm border border-white/60 bg-black/25 px-6 font-bold text-sm uppercase tracking-wide transition-transform hover:-translate-y-0.5"
-            href="#how-it-works"
+            href="#services"
           >
-            <CirclePlay size={21} />
-            Comment Ça Marche
+            View Our Services
           </a>
         </div>
       </div>

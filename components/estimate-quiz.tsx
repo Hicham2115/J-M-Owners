@@ -17,6 +17,8 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import type { LucideIcon } from "lucide-react";
+import Image from "next/image";
+import logo from "@/app/assets/logo.png";
 import { useSubmitEstimateRequest } from "@/hooks/use-contact-form";
 
 const TOTAL_STEPS = 8;
@@ -147,7 +149,7 @@ const inputClass =
   "w-full border-0 border-ink/15 border-b bg-transparent py-2 text-ink outline-none focus:border-gold-dark";
 const labelClass = "mb-1.5 block font-semibold text-[11px] text-ink/45 uppercase tracking-[0.14em]";
 const eyebrowClass = "mb-2 flex items-center gap-3 font-semibold text-gold-dark text-xs uppercase tracking-[0.24em]";
-const titleClass = "font-serif font-medium text-2xl tracking-tight sm:text-3xl";
+const titleClass = "font-serif font-semibold text-2xl tracking-tight sm:text-3xl";
 
 export function EstimateQuiz() {
   const [step, setStep] = useState(1);
@@ -187,7 +189,7 @@ export function EstimateQuiz() {
         <div className="motif-zellige absolute inset-0 opacity-[0.06]" />
 
         <div className="relative">
-          <p className="font-serif text-xl italic text-gold">J&amp;M Housing</p>
+          <Image alt="J&M Housing" className="h-8 w-auto" src={logo} />
           <p className="mt-1 text-[10px] text-white/40 uppercase tracking-[0.18em]">
             Estimation gratuite
           </p>
