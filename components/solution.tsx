@@ -56,7 +56,7 @@ export function Solution() {
                 key={title}
               >
                 <span className="flex items-baseline gap-3">
-                  <span className="font-serif text-gold-dark/40 text-sm italic">
+                  <span className="font-serif text-gold text-sm italic">
                     0{index + 1}
                   </span>
                   <Icon

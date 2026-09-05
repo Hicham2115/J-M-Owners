@@ -10,6 +10,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import img from "@/app/assets/6.jpg";
 
 const challenges = [
   { icon: CalendarX, label: "Empty calendar" },
@@ -69,7 +70,7 @@ export function OwnerChallenge() {
           <div className="absolute inset-0 overflow-hidden shadow-2xl shadow-ink/20">
             <div
               className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url(/images/hero.png)" }}
+              style={{ backgroundImage: `url(${img.src})` }}
             />
             <div className="absolute inset-0 bg-linear-to-t from-navy/85 via-navy/15 to-transparent" />
             {/* <div className="absolute right-6 bottom-6 left-6 flex items-center gap-4 bg-navy/90 px-5 py-4 backdrop-blur-sm">
