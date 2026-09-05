@@ -6,8 +6,6 @@ import Link from "next/link";
 import { useRef } from "react";
 import { properties } from "@/components/collections/properties-data";
 
-const featured = properties.filter((property) => property.top);
-
 export function Showcase() {
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -60,7 +58,7 @@ export function Showcase() {
         ref={trackRef}
       >
         <div className="shrink-0 sm:w-[calc((100vw-max(2.5rem,calc((100vw-72rem)/2))-72rem)/2)]" />
-        {featured.map((property) => (
+        {properties.map((property) => (
           <Link
             className="group relative aspect-[3/4] w-72 shrink-0 snap-start overflow-hidden sm:w-84"
             href={`/collection/${property.slug}`}
