@@ -8,7 +8,7 @@ const steps = [
   },
   {
     icon: ClipboardList,
-    title: "Preparation & Onboarding",
+    title: "Preparation and Onboarding",
     description:
       "We prepare your property, create listings and set the right pricing strategy.",
   },
@@ -20,7 +20,7 @@ const steps = [
   },
   {
     icon: LineChart,
-    title: "Revenue & Reporting",
+    title: "Revenue and Reporting",
     description:
       "You receive reports, payouts and full transparency on your performance.",
   },
@@ -59,7 +59,7 @@ export function HowItWorks() {
                   <Icon size={22} strokeWidth={1.5} />
                 </span>
                 <div className="pt-1">
-                  <span className="font-serif font-semibold text-gold/50 text-xs uppercase tracking-[0.2em] transition-colors duration-300 group-hover:text-gold">
+                  <span className="font-serif font-semibold text-gold text-xs uppercase tracking-[0.2em] transition-colors duration-300 group-hover:text-gold">
                     Step {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mt-1.5 font-serif font-semibold text-xl tracking-tight transition-colors duration-300 group-hover:text-gold">

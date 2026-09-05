@@ -58,7 +58,7 @@ export function OwnerChallenge() {
                     strokeWidth={1.5}
                   />
                 </span>
-                <span className="text-ink/70 text-[13px] leading-snug transition-colors duration-300 group-hover:text-ink">
+                <span className="text-ink/70 text-[13px] font-semibold leading-snug transition-colors duration-300 group-hover:text-ink">
                   {label}
                 </span>
               </div>
@@ -72,7 +72,7 @@ export function OwnerChallenge() {
               style={{ backgroundImage: "url(/images/hero.png)" }}
             />
             <div className="absolute inset-0 bg-linear-to-t from-navy/85 via-navy/15 to-transparent" />
-            <div className="absolute right-6 bottom-6 left-6 flex items-center gap-4 bg-navy/90 px-5 py-4 backdrop-blur-sm">
+            {/* <div className="absolute right-6 bottom-6 left-6 flex items-center gap-4 bg-navy/90 px-5 py-4 backdrop-blur-sm">
               <span className="grid size-11 shrink-0 place-items-center rounded-full bg-gold-dark text-white">
                 <House size={20} strokeWidth={1.5} />
               </span>
@@ -83,7 +83,7 @@ export function OwnerChallenge() {
                 Take care of every detail so you can enjoy peace of mind and
                 better returns.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

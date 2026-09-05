@@ -55,7 +55,7 @@ function Stars({ rating, size = 14, className = "" }: { rating: number; size?: n
 
 export function Testimonials() {
   return (
-    <section className="bg-white px-5 py-14 sm:px-8 sm:py-20 lg:px-12 lg:py-24" id="results">
+    <section className="bg-white px-5 py-14 sm:px-8 sm:py-20 lg:px-12 lg:py-24" id="testimonials">
       <div className="mx-auto max-w-4xl">
         <p className="mb-5 flex items-center gap-3 font-semibold text-gold-dark text-xs uppercase tracking-[0.28em]">
           <span className="h-px w-8 bg-gold-dark" />

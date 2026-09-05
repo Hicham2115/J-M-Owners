@@ -23,6 +23,14 @@ const clauses = [
     question: "Who actually has access to my property?",
     answer: "Only verified staff, cleared for that specific job. Every entry is logged and available to you on request.",
   },
+  {
+    question: "Which areas of Marrakech do you cover?",
+    answer: "Gueliz, Hivernage, the Medina, Palmeraie and the surrounding Marrakech region — our team is based locally and on-site within the hour.",
+  },
+  {
+    question: "Is my property insured while it's listed?",
+    answer: "Yes. Every stay is covered against damage and liability for the full duration of the booking, at no extra cost to you.",
+  },
 ];
 
 export function Faq() {
@@ -38,10 +46,12 @@ export function Faq() {
         </h2>
 
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2">
-          {clauses.map(({ question, answer }, index) => (
+          {clauses.map(({ question, answer }, index) => {
+            const lastRowStart = (Math.ceil(clauses.length / 2) - 1) * 2;
+            return (
             <div
               className={`border-ink/10 py-7 sm:odd:pr-10 sm:even:pl-10 ${
-                index < clauses.length - 2 ? "border-b" : "border-b sm:border-b-0"
+                index < lastRowStart ? "border-b" : "border-b sm:border-b-0"
               } ${index % 2 === 0 ? "sm:border-r" : ""}`}
               key={question}
             >
@@ -51,7 +61,8 @@ export function Faq() {
               <h3 className="mt-2 font-serif font-semibold text-ink text-lg tracking-tight">{question}</h3>
               <p className="mt-2 text-[14px] text-ink/65 leading-relaxed">{answer}</p>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -32,7 +32,7 @@ const exploreLinks = [
 const companyLinks = [
   { href: "#about", label: "About Us" },
   { href: "#estimate", label: "Free Estimate" },
-  { href: "#contact", label: "Contact" },
+  { href: "#estimate", label: "Contact" },
 ];
 
 const socials = [

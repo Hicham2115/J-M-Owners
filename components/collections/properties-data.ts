@@ -1,3 +1,9 @@
+import type { StaticImageData } from "next/image";
+import photoNerolia from "@/app/assets/1.jpeg";
+import photoAmelkis from "@/app/assets/3.jpeg";
+import photoYasmine from "@/app/assets/4.jpeg";
+import photoHajar from "@/app/assets/5.jpeg";
+
 export type PropertyType = "Villa" | "Apartment" | "Riad";
 
 export interface Property {
@@ -9,6 +15,7 @@ export interface Property {
   pool: boolean;
   top?: boolean;
   description: string;
+  image?: StaticImageData;
 }
 
 export const properties: Property[] = [
@@ -21,6 +28,7 @@ export const properties: Property[] = [
     pool: true,
     top: true,
     description: "Contemporary 5-bedroom villa in the Noria Golf residence.",
+    image: photoNerolia,
   },
   {
     name: "Villa Hajar",
@@ -31,6 +39,7 @@ export const properties: Property[] = [
     pool: true,
     top: true,
     description: "Family villa with an olive-tree garden, Route de l'Ourika.",
+    image: photoHajar,
   },
   {
     name: "Villa Golf Amelkis",
@@ -41,6 +50,7 @@ export const properties: Property[] = [
     pool: true,
     top: true,
     description: "Prestige 4-bedroom villa facing the Amelkis golf course.",
+    image: photoAmelkis,
   },
   {
     name: "Riad Yasmine",
@@ -50,6 +60,7 @@ export const properties: Property[] = [
     beds: 3,
     pool: false,
     description: "Traditional riad with a rooftop terrace, steps from Jemaa el-Fna.",
+    image: photoYasmine,
   },
   {
     name: "Loft Guéliz",

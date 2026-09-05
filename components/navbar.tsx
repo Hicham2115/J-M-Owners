@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -19,17 +19,18 @@ import {
 } from "@/components/ui/popover";
 
 const navigationLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#collection", label: "Collection" },
-  { href: "#services", label: "Our Services" },
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#testimonials", label: "Testimonials" },
-  { href: "#about", label: "About Us" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Accueil" },
+  { href: "/collection", label: "Collection" },
+  { href: "/#services", label: "Nos Services" },
+  { href: "/#how-it-works", label: "Comment ça marche" },
+  { href: "/#testimonials", label: "Témoignages" },
+  { href: "/#about", label: "À propos" },
+  { href: "/#estimate", label: "Contact" },
 ];
 
 export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -50,8 +51,8 @@ export default function SiteHeader() {
         {/* Brand */}
         <a
           className="flex items-center"
-          href="#home"
-          aria-label="J&M Housing home"
+          href="/"
+          aria-label="J&M Housing accueil"
         >
           <Image
             alt="J&M Housing"
@@ -80,45 +81,67 @@ export default function SiteHeader() {
         {/* Right side */}
         <div className="flex items-center gap-2">
           <Button
-            className="hidden h-auto bg-linear-to-br from-gold to-gold-dark py-3 font-bold text-white text-xs uppercase tracking-wide hover:opacity-90 lg:inline-flex"
-            render={<a href="#estimate" />}
+            className="hidden h-auto bg-linear-to-br from-gold to-gold-dark py-3 font-bold text-white text-xs uppercase tracking-wide hover:opacity-90 px-6  lg:inline-flex"
+            render={<a href="/#estimate" />}
             nativeButton={false}
           >
-            Get Your Free Estimate
+            Estimation Gratuite
           </Button>
 
           {/* Mobile menu trigger */}
-          <Popover>
+          <Popover onOpenChange={setMobileOpen} open={mobileOpen}>
             <PopoverTrigger asChild>
               <Button
-                className="text-white hover:bg-white/10 hover:text-white lg:hidden"
+                className="relative text-white hover:bg-white/10 hover:text-white lg:hidden"
                 size="icon"
                 variant="ghost"
-                aria-label="Open navigation"
+                aria-label={
+                  mobileOpen ? "Fermer la navigation" : "Ouvrir la navigation"
+                }
               >
-                <Menu size={20} />
+                <Menu
+                  className={`absolute transition-all duration-200 ${mobileOpen ? "scale-50 opacity-0" : "scale-100 opacity-100"}`}
+                  size={20}
+                />
+                <X
+                  className={`absolute transition-all duration-200 ${mobileOpen ? "scale-100 opacity-100" : "scale-50 opacity-0"}`}
+                  size={20}
+                />
               </Button>
             </PopoverTrigger>
-            <PopoverContent align="end" className="w-56 p-1 lg:hidden">
+            <PopoverContent
+              align="end"
+              className="w-64 rounded-xl border-white/10 bg-navy/95 p-2 shadow-2xl backdrop-blur-md lg:hidden"
+              sideOffset={12}
+            >
               <NavigationMenu className="max-w-none *:w-full">
-                <NavigationMenuList className="flex-col items-start gap-0">
-                  {navigationLinks.map((link) => (
+                <NavigationMenuList className="flex-col items-start gap-0.5">
+                  {navigationLinks.map((link, i) => (
                     <NavigationMenuItem className="w-full" key={link.label}>
-                      <NavigationMenuLink className="py-1.5" href={link.href}>
+                      <NavigationMenuLink
+                        className="group flex items-center gap-3 rounded-lg bg-transparent px-3 py-2.5 text-sm text-white! transition-colors hover:bg-white/5 hover:text-gold! focus:bg-white/5 focus:text-gold!"
+                        href={link.href}
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        <span className="font-mono text-[10px] text-gold/50! tabular-nums">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
                         {link.label}
                       </NavigationMenuLink>
                     </NavigationMenuItem>
                   ))}
-                  <NavigationMenuItem className="w-full">
-                    <NavigationMenuLink
-                      className="py-1.5 font-semibold text-gold-dark"
-                      href="#estimate"
-                    >
-                      Get Your Free Estimate
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
                 </NavigationMenuList>
               </NavigationMenu>
+
+              <div className="mt-2 border-white/10 border-t p-2">
+                <a
+                  className="flex h-auto items-center justify-center rounded-md bg-linear-to-br from-gold to-gold-dark px-6 py-3 font-bold text-white text-xs uppercase tracking-wide transition-opacity hover:opacity-90"
+                  href="/#estimate"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Estimation Gratuite
+                </a>
+              </div>
             </PopoverContent>
           </Popover>
         </div>

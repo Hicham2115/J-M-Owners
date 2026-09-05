@@ -39,14 +39,14 @@ export function Hero() {
             href="#estimate"
           >
             <CalendarDays size={20} />
-            Get Your Free Revenue Estimate
+            Estimation Gratuite de Revenus
           </a>
           <a
             className="inline-flex min-h-14 items-center justify-center gap-3 rounded-sm border border-white/60 bg-black/25 px-6 font-bold text-sm uppercase tracking-wide transition-transform hover:-translate-y-0.5"
             href="#how-it-works"
           >
             <CirclePlay size={21} />
-            See How It Works
+            Comment Ça Marche
           </a>
         </div>
       </div>

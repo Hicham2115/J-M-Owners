@@ -8,6 +8,7 @@ import { Testimonials } from "@/components/testimonials";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { Contact } from "@/components/contact";
+import { TrackRecord } from "@/components/track-record";
 
 export default function Home() {
   return (
@@ -15,8 +16,10 @@ export default function Home() {
       <SiteHeader />
       <Hero />
       <OwnerChallenge />
-      <Solution />
       <Services />
+      <TrackRecord />
+
+      <Solution />
       <HowItWorks />
       <Testimonials />
       <Contact />

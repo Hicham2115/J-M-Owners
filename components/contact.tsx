@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "@tanstack/react-form";
-import { Mail, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSubmitEstimateRequest } from "@/hooks/use-contact-form";
 import { contactSchema, type ContactInput } from "@/lib/schemas/contact";
@@ -51,6 +51,10 @@ export function Contact() {
               <Mail className="text-gold" size={16} strokeWidth={1.5} />
               owners@jmhousing.ma
             </a>
+            <p className="flex items-center gap-3 text-sm text-white/80">
+              <MapPin className="text-gold" size={16} strokeWidth={1.5} />
+              Gueliz, Marrakech, Morocco
+            </p>
           </div>
         </div>
 
