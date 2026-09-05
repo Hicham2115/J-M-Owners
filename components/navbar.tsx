@@ -82,7 +82,7 @@ export default function SiteHeader() {
         <div className="flex items-center gap-2">
           <Button
             className="hidden h-auto bg-linear-to-br from-gold to-gold-dark py-3 font-bold text-white text-xs uppercase tracking-wide hover:opacity-90 px-6  lg:inline-flex"
-            render={<a href="/#estimate" />}
+            render={<a href="/estimation" />}
             nativeButton={false}
           >
             Estimation Gratuite
@@ -136,7 +136,7 @@ export default function SiteHeader() {
               <div className="mt-2 border-white/10 border-t p-2">
                 <a
                   className="flex h-auto items-center justify-center rounded-md bg-linear-to-br from-gold to-gold-dark px-6 py-3 font-bold text-white text-xs uppercase tracking-wide transition-opacity hover:opacity-90"
-                  href="/#estimate"
+                  href="/estimation"
                   onClick={() => setMobileOpen(false)}
                 >
                   Estimation Gratuite

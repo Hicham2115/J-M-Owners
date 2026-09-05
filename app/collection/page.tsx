@@ -26,7 +26,7 @@ export default function CollectionsPage() {
           </p>
           <a
             className="mt-8 inline-flex bg-linear-to-br from-gold to-gold-dark px-8 py-3.5 font-bold text-navy text-xs uppercase tracking-wide transition-opacity hover:opacity-90"
-            href="/#estimate"
+            href="/estimation"
           >
             Request a free estimate
           </a>

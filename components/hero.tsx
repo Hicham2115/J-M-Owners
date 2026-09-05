@@ -36,7 +36,7 @@ export function Hero() {
         <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
           <a
             className="inline-flex min-h-14 items-center justify-center gap-3 rounded-sm bg-linear-to-br from-gold to-gold-dark px-6 font-bold text-sm uppercase tracking-wide transition-transform hover:-translate-y-0.5"
-            href="#estimate"
+            href="/estimation"
           >
             <CalendarDays size={20} />
             Estimation Gratuite de Revenus

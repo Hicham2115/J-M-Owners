@@ -23,16 +23,16 @@ function FacebookIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 const exploreLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#services", label: "Our Services" },
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#testimonials", label: "Testimonials" },
+  { href: "/#home", label: "Home" },
+  { href: "/#services", label: "Our Services" },
+  { href: "/#how-it-works", label: "How It Works" },
+  { href: "/#testimonials", label: "Testimonials" },
 ];
 
 const companyLinks = [
-  { href: "#about", label: "About Us" },
-  { href: "#estimate", label: "Free Estimate" },
-  { href: "#estimate", label: "Contact" },
+  { href: "/#about", label: "About Us" },
+  { href: "/estimation", label: "Free Estimate" },
+  { href: "/#estimate", label: "Contact" },
 ];
 
 const socials = [
@@ -53,7 +53,7 @@ export function Footer() {
           </h3>
           <a
             className="inline-flex shrink-0 items-center gap-2 bg-linear-to-br from-gold to-gold-dark px-8 py-3.5 font-bold text-navy text-xs uppercase tracking-wide transition-opacity hover:opacity-90"
-            href="#estimate"
+            href="/estimation"
           >
             Get Your Free Estimate
           </a>
@@ -62,7 +62,7 @@ export function Footer() {
 
       <div className="relative mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1.2fr_0.8fr_0.8fr_1fr] lg:px-12">
         <div>
-          <a aria-label="J&M Housing home" className="inline-flex items-center" href="#home">
+          <a aria-label="J&M Housing home" className="inline-flex items-center" href="/">
             <Image alt="J&M Housing" className="h-11 w-auto" src={logo} />
           </a>
           <p className="mt-5 max-w-xs text-[15px] text-white/55 leading-relaxed">
@@ -90,10 +90,11 @@ export function Footer() {
             {exploreLinks.map((link) => (
               <li key={link.label}>
                 <a
-                  className="text-[15px] text-white/65 transition-colors duration-300 hover:text-gold"
+                  className="group relative inline-block text-[15px] text-white/65 transition-colors duration-300 hover:text-gold"
                   href={link.href}
                 >
                   {link.label}
+                  <span className="absolute inset-x-0 -bottom-0.5 h-px origin-center scale-x-0 bg-gold transition-transform duration-300 ease-out group-hover:scale-x-100" />
                 </a>
               </li>
             ))}
@@ -106,10 +107,11 @@ export function Footer() {
             {companyLinks.map((link) => (
               <li key={link.label}>
                 <a
-                  className="text-[15px] text-white/65 transition-colors duration-300 hover:text-gold"
+                  className="group relative inline-block text-[15px] text-white/65 transition-colors duration-300 hover:text-gold"
                   href={link.href}
                 >
                   {link.label}
+                  <span className="absolute inset-x-0 -bottom-0.5 h-px origin-center scale-x-0 bg-gold transition-transform duration-300 ease-out group-hover:scale-x-100" />
                 </a>
               </li>
             ))}
@@ -121,20 +123,26 @@ export function Footer() {
           <ul className="space-y-4">
             <li>
               <a
-                className="flex items-start gap-3 text-[15px] text-white/65 transition-colors duration-300 hover:text-gold"
+                className="group flex items-start gap-3 text-[15px] text-white/65 transition-colors duration-300 hover:text-gold"
                 href="tel:+212600000000"
               >
                 <Phone className="mt-0.5 shrink-0 text-gold" size={16} strokeWidth={1.5} />
-                +212 6 00 00 00 00
+                <span className="relative">
+                  +212 6 00 00 00 00
+                  <span className="absolute inset-x-0 -bottom-0.5 h-px origin-center scale-x-0 bg-gold transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                </span>
               </a>
             </li>
             <li>
               <a
-                className="flex items-start gap-3 text-[15px] text-white/65 transition-colors duration-300 hover:text-gold"
+                className="group flex items-start gap-3 text-[15px] text-white/65 transition-colors duration-300 hover:text-gold"
                 href="mailto:owners@jmhousing.ma"
               >
                 <Mail className="mt-0.5 shrink-0 text-gold" size={16} strokeWidth={1.5} />
-                owners@jmhousing.ma
+                <span className="relative">
+                  owners@jmhousing.ma
+                  <span className="absolute inset-x-0 -bottom-0.5 h-px origin-center scale-x-0 bg-gold transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                </span>
               </a>
             </li>
             <li className="flex items-start gap-3 text-[15px] text-white/65">
@@ -149,15 +157,31 @@ export function Footer() {
         <div className="mx-auto flex max-w-6xl flex-col-reverse items-center justify-between gap-3 text-white/40 text-xs sm:flex-row">
           <p>© {new Date().getFullYear()} J&amp;M Housing. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <a className="transition-colors duration-300 hover:text-gold" href="#">
+            <a className="group relative py-1 transition-colors duration-300 hover:text-gold" href="#">
               Privacy Policy
+              <span className="absolute inset-x-0 -bottom-0.5 h-px origin-center scale-x-0 bg-gold transition-transform duration-300 ease-out group-hover:scale-x-100" />
             </a>
-            <a className="transition-colors duration-300 hover:text-gold" href="#">
+            <a className="group relative py-1 transition-colors duration-300 hover:text-gold" href="#">
               Terms of Service
+              <span className="absolute inset-x-0 -bottom-0.5 h-px origin-center scale-x-0 bg-gold transition-transform duration-300 ease-out group-hover:scale-x-100" />
             </a>
           </div>
         </div>
       </div>
+
+      <p className="relative m-0 border-white/10 border-t px-5 py-4 text-center text-[11px] text-white/35">
+        Designed and developed by{" "}
+        <a
+          className="group relative inline-block py-0.5 text-white/50 transition-colors duration-300 hover:text-gold"
+          href="https://www.stallionadvertising.ma/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Stallion Advertising
+          <span className="absolute inset-x-0 -bottom-0.5 h-px origin-center scale-x-0 bg-gold transition-transform duration-300 ease-out group-hover:scale-x-100" />
+        </a>
+        .
+      </p>
     </footer>
   );
 }
