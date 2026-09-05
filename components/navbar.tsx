@@ -20,7 +20,7 @@ import {
 
 const navigationLinks = [
   { href: "/#home", label: "Accueil" },
-  { href: "/collection", label: "Collection" },
+  // { href: "/collection", label: "Collection" },
   { href: "/#services", label: "Nos Services" },
   { href: "/#how-it-works", label: "Comment ça marche" },
   { href: "/#testimonials", label: "Témoignages" },

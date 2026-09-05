@@ -9,6 +9,7 @@ import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { Contact } from "@/components/contact";
 import { TrackRecord } from "@/components/track-record";
+import { Showcase } from "@/components/showcase";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Solution />
       <HowItWorks />
       <Testimonials />
+      <Showcase />
       <Contact />
       <Faq />
 

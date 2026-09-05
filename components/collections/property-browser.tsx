@@ -9,6 +9,7 @@ import {
   Waves,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { properties, type PropertyType } from "./properties-data";
 
@@ -122,7 +123,11 @@ export function PropertyBrowser() {
         ) : (
           <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((property) => (
-              <div className="group" key={property.name}>
+              <Link
+                className="group block"
+                href={`/collection/${property.slug}`}
+                key={property.name}
+              >
                 <div className="relative aspect-4/3 overflow-hidden bg-navy">
                   {property.image ? (
                     <Image
@@ -172,7 +177,7 @@ export function PropertyBrowser() {
                 <p className="mt-2 text-[13px] text-ink/60 leading-relaxed">
                   {property.description}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
         )}
