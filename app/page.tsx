@@ -6,6 +6,7 @@ import { Solution } from "@/components/solution";
 import { Services } from "@/components/services";
 import { Testimonials } from "@/components/testimonials";
 import { Faq } from "@/components/faq";
+import { Footer } from "@/components/footer";
 import { Contact } from "@/components/contact";
 
 export default function Home() {
@@ -18,8 +19,10 @@ export default function Home() {
       <Services />
       <HowItWorks />
       <Testimonials />
-      <Faq />
       <Contact />
+      <Faq />
+
+      <Footer />
     </main>
   );
 }
