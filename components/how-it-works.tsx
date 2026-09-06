@@ -42,7 +42,7 @@ export function HowItWorks() {
           <h2 className="font-serif font-medium text-4xl tracking-tight sm:text-5xl">
             A simple process.
             <br />
-            <span className="text-gold italic">Outstanding results.</span>
+            <span className="text-gold ">Outstanding results.</span>
           </h2>
           <p className="mt-6 max-w-sm text-[15px] text-white/60 leading-relaxed">
             From first contact to your first payout, here&rsquo;s exactly what

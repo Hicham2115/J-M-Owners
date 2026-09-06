@@ -183,7 +183,7 @@ export function EstimateQuiz() {
   const activeStep = done ? TOTAL_STEPS + 1 : step;
 
   return (
-    <div className="grid h-152 max-h-[calc(100dvh-7rem)] w-full max-w-5xl overflow-hidden border border-ink/10 bg-white shadow-2xl lg:grid-cols-[280px_1fr]">
+    <div className="grid h-152 max-h-[calc(100dvh-6rem)] w-full max-w-5xl overflow-hidden border border-ink/10 bg-white shadow-2xl sm:max-h-[calc(100dvh-7.5rem)] lg:grid-cols-[280px_1fr]">
       {/* Brand / stepper panel */}
       <div className="relative hidden flex-col justify-between overflow-hidden bg-navy p-8 text-white lg:flex">
         <div className="motif-zellige absolute inset-0 opacity-[0.06]" />

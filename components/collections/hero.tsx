@@ -15,7 +15,7 @@ const searchFields = [
 
 export function CollectionsHero() {
   return (
-    <section className="relative bg-navy px-5 pt-36 pb-28 text-white sm:px-8 sm:pt-40 sm:pb-32 lg:px-12">
+    <section className="relative bg-navy px-5 pt-36 pb-16 text-white sm:px-8 sm:pt-40 sm:pb-32 lg:px-12">
       <Image
         alt=""
         className="object-cover"
@@ -54,7 +54,7 @@ export function CollectionsHero() {
         </div> */}
       </div>
 
-      <div className="-bottom-14 -translate-x-1/2 absolute left-1/2 w-[calc(100%-2.5rem)] max-w-4xl sm:w-[calc(100%-4rem)]">
+      <div className="relative mx-auto mt-10 w-full max-w-4xl px-1 sm:-bottom-14 sm:-translate-x-1/2 sm:absolute sm:left-1/2 sm:mt-0 sm:w-[calc(100%-4rem)] sm:px-0">
         <div className="grid grid-cols-1 divide-y divide-ink/10 border border-ink/10 bg-white text-ink shadow-2xl sm:grid-cols-[1fr_1fr_1fr_auto] sm:divide-x sm:divide-y-0">
           {searchFields.map(({ label, value }) => (
             <div className="px-6 py-3" key={label}>

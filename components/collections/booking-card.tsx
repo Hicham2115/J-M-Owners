@@ -60,7 +60,7 @@ export function BookingCard({
         <div className="flex items-center gap-3">
           <button
             aria-label="Retirer un voyageur"
-            className="grid size-7 place-items-center rounded-full border border-ink/20 text-ink/60 transition-colors hover:border-gold-dark hover:text-gold-dark disabled:opacity-30"
+            className="grid size-9 place-items-center rounded-full border border-ink/20 text-ink/60 transition-colors hover:border-gold-dark hover:text-gold-dark disabled:opacity-30"
             disabled={guests <= 1}
             onClick={() => setGuests((g) => Math.max(1, g - 1))}
             type="button"
@@ -70,7 +70,7 @@ export function BookingCard({
           <span className="w-4 text-center text-sm">{guests}</span>
           <button
             aria-label="Ajouter un voyageur"
-            className="grid size-7 place-items-center rounded-full border border-ink/20 text-ink/60 transition-colors hover:border-gold-dark hover:text-gold-dark"
+            className="grid size-9 place-items-center rounded-full border border-ink/20 text-ink/60 transition-colors hover:border-gold-dark hover:text-gold-dark"
             onClick={() => setGuests((g) => Math.min(12, g + 1))}
             type="button"
           >

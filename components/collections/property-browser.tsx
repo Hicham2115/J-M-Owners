@@ -123,61 +123,63 @@ export function PropertyBrowser() {
         ) : (
           <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((property) => (
-              <Link
-                className="group block"
-                href={`/collection/${property.slug}`}
-                key={property.name}
-              >
-                <div className="relative aspect-4/3 overflow-hidden bg-navy">
-                  {property.image ? (
-                    <Image
-                      alt={property.name}
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-                      fill
-                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      src={property.image}
-                    />
-                  ) : (
-                    <>
-                      <div className="motif-zellige absolute inset-0 opacity-[0.18]" />
-                      <div className="relative flex h-full items-center justify-center">
-                        <span className="font-serif text-3xl text-gold italic">
-                          {initialsOf(property.name)}
-                        </span>
-                      </div>
-                    </>
-                  )}
-                  <div className="absolute inset-0 bg-linear-to-t from-navy/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  {property.top && (
-                    <span className="absolute top-3 left-3 bg-gold-dark px-3 py-1 font-semibold text-[10px] text-white uppercase tracking-wide">
-                      Top rated
+              <div className="group relative" key={property.name}>
+                <button
+                  aria-label="Save to favourites"
+                  className="absolute top-3 right-3 z-10 grid size-11 place-items-center rounded-full bg-white/90 text-ink/60 transition-colors hover:text-gold-dark"
+                  type="button"
+                >
+                  <Heart size={15} strokeWidth={1.5} />
+                </button>
+                <Link className="block" href={`/collection/${property.slug}`}>
+                  <div className="relative aspect-4/3 overflow-hidden bg-navy">
+                    {property.image ? (
+                      <Image
+                        alt={property.name}
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        src={property.image}
+                      />
+                    ) : (
+                      <>
+                        <div className="motif-zellige absolute inset-0 opacity-[0.18]" />
+                        <div className="relative flex h-full items-center justify-center">
+                          <span className="font-serif text-3xl text-gold italic">
+                            {initialsOf(property.name)}
+                          </span>
+                        </div>
+                      </>
+                    )}
+                    <div className="absolute inset-0 bg-linear-to-t from-navy/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    {property.top && (
+                      <span className="absolute top-3 left-3 bg-gold-dark px-3 py-1 font-semibold text-[10px] text-white uppercase tracking-wide">
+                        Top rated
+                      </span>
+                    )}
+                  </div>
+                  <div className="mt-4 flex items-start justify-between gap-3">
+                    <h3 className="font-serif font-semibold text-ink text-lg tracking-tight">
+                      {property.name}
+                    </h3>
+                    <span className="flex shrink-0 items-center gap-1 text-ink text-sm">
+                      <Star
+                        className="text-gold-dark"
+                        fill="currentColor"
+                        size={14}
+                      />
+                      {property.rating.toFixed(1)}
                     </span>
-                  )}
-                  <span className="absolute top-3 right-3 grid size-8 place-items-center rounded-full bg-white/90 text-ink/60 transition-colors hover:text-gold-dark">
-                    <Heart size={15} strokeWidth={1.5} />
-                  </span>
-                </div>
-                <div className="mt-4 flex items-start justify-between gap-3">
-                  <h3 className="font-serif font-semibold text-ink text-lg tracking-tight">
-                    {property.name}
-                  </h3>
-                  <span className="flex shrink-0 items-center gap-1 text-ink text-sm">
-                    <Star
-                      className="text-gold-dark"
-                      fill="currentColor"
-                      size={14}
-                    />
-                    {property.rating.toFixed(1)}
-                  </span>
-                </div>
-                <p className="mt-1 flex items-center gap-1.5 text-[13px] text-ink/50">
-                  <MapPin size={13} strokeWidth={1.5} />
-                  {property.location}
-                </p>
-                <p className="mt-2 text-[13px] text-ink/60 leading-relaxed">
-                  {property.description}
-                </p>
-              </Link>
+                  </div>
+                  <p className="mt-1 flex items-center gap-1.5 text-[13px] text-ink/50">
+                    <MapPin size={13} strokeWidth={1.5} />
+                    {property.location}
+                  </p>
+                  <p className="mt-2 text-[13px] text-ink/60 leading-relaxed">
+                    {property.description}
+                  </p>
+                </Link>
+              </div>
             ))}
           </div>
         )}

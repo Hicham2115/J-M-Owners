@@ -59,11 +59,11 @@ export function Solution() {
                   <span className="font-serif text-gold text-sm italic">
                     0{index + 1}
                   </span>
-                  <Icon
+                  {/* <Icon
                     className="shrink-0 text-gold-dark transition-transform duration-300 group-hover:scale-110"
                     size={20}
                     strokeWidth={1.5}
-                  />
+                  /> */}
                 </span>
                 <div>
                   <h3 className="font-serif font-semibold text-base tracking-tight">

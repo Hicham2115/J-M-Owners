@@ -19,12 +19,12 @@ import {
 } from "@/components/ui/popover";
 
 const navigationLinks = [
-  { href: "/#home", label: "Accueil" },
+  { href: "/#home", label: "Home" },
   // { href: "/collection", label: "Collection" },
-  { href: "/#services", label: "Nos Services" },
-  { href: "/#how-it-works", label: "Comment ça marche" },
-  { href: "/#testimonials", label: "Témoignages" },
-  { href: "/#about", label: "À propos" },
+  { href: "/#services", label: "Our Services" },
+  { href: "/#how-it-works", label: "How It Works" },
+  { href: "/#testimonials", label: "Testimonials" },
+  { href: "/#about", label: "About" },
   { href: "/#estimate", label: "Contact" },
 ];
 
@@ -92,7 +92,7 @@ export default function SiteHeader() {
           <Popover onOpenChange={setMobileOpen} open={mobileOpen}>
             <PopoverTrigger asChild>
               <Button
-                className="relative text-white hover:bg-white/10 hover:text-white lg:hidden"
+                className="relative size-11 text-white hover:bg-white/10 hover:text-white lg:hidden"
                 size="icon"
                 variant="ghost"
                 aria-label={

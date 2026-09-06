@@ -8,19 +8,27 @@ import { contactSchema, type ContactInput } from "@/lib/schemas/contact";
 
 const fieldClass =
   "block w-full border-0 border-white/25 border-b bg-transparent px-0 py-2.5 text-white outline-none placeholder:text-white/35 focus:border-gold";
-const labelClass = "mb-2 block font-semibold text-[11px] text-gold/70 uppercase tracking-[0.16em]";
+const labelClass =
+  "mb-2 block font-semibold text-[11px] text-gold/70 uppercase tracking-[0.16em]";
 
 function fieldError(errors: unknown[]) {
   const first = errors[0];
   if (!first) return null;
-  return typeof first === "string" ? first : ((first as { message?: string })?.message ?? "Invalid value");
+  return typeof first === "string"
+    ? first
+    : ((first as { message?: string })?.message ?? "Invalid value");
 }
 
 export function Contact() {
   const submitEstimate = useSubmitEstimateRequest();
 
   const form = useForm({
-    defaultValues: { name: "", email: "", phone: "", message: "" } as ContactInput,
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    } as ContactInput,
     onSubmit: async ({ value }) => {
       await submitEstimate.mutateAsync(value);
       form.reset();
@@ -28,7 +36,10 @@ export function Contact() {
   });
 
   return (
-    <section className="relative overflow-hidden bg-navy px-5 py-20 text-white sm:px-8 sm:py-28 lg:px-12 lg:py-32" id="estimate">
+    <section
+      className="relative overflow-hidden bg-navy px-5 py-20 text-white sm:px-8 sm:py-28 lg:px-12 lg:py-32"
+      id="estimate"
+    >
       <div className="motif-zellige absolute inset-0 opacity-[0.06]" />
       <div className="relative mx-auto grid max-w-6xl gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
         <div>
@@ -37,17 +48,25 @@ export function Contact() {
             Get started
           </p>
           <h2 className="font-serif font-medium text-4xl leading-[1.12] tracking-tight sm:text-5xl">
-            Request your <span className="italic text-gold">free revenue estimate</span>.
+            Request your{" "}
+            <span className=" text-gold">free revenue estimate</span>.
           </h2>
           <p className="mt-6 max-w-sm text-[15px] text-white/60 leading-relaxed">
-            Tell us about your property and we&rsquo;ll come back with an honest occupancy and revenue projection — no obligation, within 24 hours.
+            Tell us about your property and we&rsquo;ll come back with an honest
+            occupancy and revenue projection — no obligation, within 24 hours.
           </p>
           <div className="mt-10 space-y-4 border-white/15 border-t pt-8">
-            <a className="flex items-center gap-3 text-sm text-white/80 transition-colors hover:text-gold" href="tel:+212600000000">
+            <a
+              className="flex items-center gap-3 text-sm text-white/80 transition-colors hover:text-gold"
+              href="tel:+212600000000"
+            >
               <Phone className="text-gold" size={16} strokeWidth={1.5} />
               +212 6 00 00 00 00
             </a>
-            <a className="flex items-center gap-3 text-sm text-white/80 transition-colors hover:text-gold" href="mailto:owners@jmhousing.ma">
+            <a
+              className="flex items-center gap-3 text-sm text-white/80 transition-colors hover:text-gold"
+              href="mailto:owners@jmhousing.ma"
+            >
               <Mail className="text-gold" size={16} strokeWidth={1.5} />
               owners@jmhousing.ma
             </a>
@@ -66,7 +85,10 @@ export function Contact() {
           }}
         >
           <div className="grid grid-cols-1 gap-7 sm:grid-cols-2">
-            <form.Field name="name" validators={{ onChange: contactSchema.shape.name }}>
+            <form.Field
+              name="name"
+              validators={{ onChange: contactSchema.shape.name }}
+            >
               {(field) => (
                 <div>
                   <label className={labelClass} htmlFor={field.name}>
@@ -80,13 +102,18 @@ export function Contact() {
                     value={field.state.value}
                   />
                   {fieldError(field.state.meta.errors) && (
-                    <p className="mt-1.5 text-[12px] text-red-300">{fieldError(field.state.meta.errors)}</p>
+                    <p className="mt-1.5 text-[12px] text-red-300">
+                      {fieldError(field.state.meta.errors)}
+                    </p>
                   )}
                 </div>
               )}
             </form.Field>
 
-            <form.Field name="email" validators={{ onChange: contactSchema.shape.email }}>
+            <form.Field
+              name="email"
+              validators={{ onChange: contactSchema.shape.email }}
+            >
               {(field) => (
                 <div>
                   <label className={labelClass} htmlFor={field.name}>
@@ -101,7 +128,9 @@ export function Contact() {
                     value={field.state.value}
                   />
                   {fieldError(field.state.meta.errors) && (
-                    <p className="mt-1.5 text-[12px] text-red-300">{fieldError(field.state.meta.errors)}</p>
+                    <p className="mt-1.5 text-[12px] text-red-300">
+                      {fieldError(field.state.meta.errors)}
+                    </p>
                   )}
                 </div>
               )}
@@ -126,7 +155,10 @@ export function Contact() {
             )}
           </form.Field>
 
-          <form.Field name="message" validators={{ onChange: contactSchema.shape.message }}>
+          <form.Field
+            name="message"
+            validators={{ onChange: contactSchema.shape.message }}
+          >
             {(field) => (
               <div>
                 <label className={labelClass} htmlFor={field.name}>
@@ -140,7 +172,9 @@ export function Contact() {
                   value={field.state.value}
                 />
                 {fieldError(field.state.meta.errors) && (
-                  <p className="mt-1.5 text-[12px] text-red-300">{fieldError(field.state.meta.errors)}</p>
+                  <p className="mt-1.5 text-[12px] text-red-300">
+                    {fieldError(field.state.meta.errors)}
+                  </p>
                 )}
               </div>
             )}
