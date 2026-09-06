@@ -24,19 +24,19 @@ import { useSubmitEstimateRequest } from "@/hooks/use-contact-form";
 const TOTAL_STEPS = 8;
 
 const stepMeta: { label: string; icon: LucideIcon }[] = [
-  { label: "Coordonnées", icon: User },
-  { label: "Type de bien", icon: HomeIcon },
-  { label: "Localisation", icon: MapPin },
-  { label: "Chambres", icon: Bed },
-  { label: "Équipements", icon: Sparkles },
-  { label: "Statut", icon: ClipboardList },
-  { label: "Objectif", icon: Target },
-  { label: "Récapitulatif", icon: Send },
+  { label: "Your details", icon: User },
+  { label: "Property type", icon: HomeIcon },
+  { label: "Location", icon: MapPin },
+  { label: "Bedrooms", icon: Bed },
+  { label: "Amenities", icon: Sparkles },
+  { label: "Status", icon: ClipboardList },
+  { label: "Goal", icon: Target },
+  { label: "Summary", icon: Send },
 ];
 
 const propertyTypes = [
   { value: "Villa", icon: HomeIcon },
-  { value: "Appartement", icon: Building2 },
+  { value: "Apartment", icon: Building2 },
   { value: "Riad", icon: HomeIcon },
   { value: "Duplex", icon: Building2 },
 ];
@@ -48,31 +48,31 @@ const locations = [
   "Amelkis",
   "Targa",
   "Prestigia",
-  "Médina",
-  "Autre",
+  "Medina",
+  "Other",
 ];
 
 const bedroomOptions = ["1", "2", "3", "4", "5+"];
 
 const amenitiesList = [
-  "Piscine",
-  "Wifi haut débit",
-  "Climatisation",
-  "Parking privé",
-  "Jardin",
-  "Vue dégagée",
+  "Pool",
+  "High-speed wifi",
+  "Air conditioning",
+  "Private parking",
+  "Garden",
+  "Clear view",
 ];
 
 const statusOptions = [
-  "Actuellement vide",
-  "Déjà loué (courte ou longue durée)",
-  "Usage personnel occasionnel",
+  "Currently vacant",
+  "Already rented (short or long term)",
+  "Occasional personal use",
 ];
 
 const goalOptions = [
-  "Maximiser le revenu locatif",
-  "Un complément de revenu, sans y penser",
-  "La tranquillité d'esprit avant tout",
+  "Maximise rental income",
+  "Extra income, without the hassle",
+  "Peace of mind above all",
 ];
 
 interface FormState {
@@ -126,14 +126,14 @@ function canProceed(step: number, form: FormState) {
 
 function buildMessage(form: FormState) {
   const lines = [
-    `Type de bien : ${form.propertyType}`,
-    `Localisation : ${form.location}`,
-    `Chambres : ${form.bedrooms}`,
-    `Équipements : ${form.amenities.length ? form.amenities.join(", ") : "Aucun renseigné"}`,
-    `Statut actuel : ${form.status}`,
-    `Objectif principal : ${form.goal}`,
+    `Property type: ${form.propertyType}`,
+    `Location: ${form.location}`,
+    `Bedrooms: ${form.bedrooms}`,
+    `Amenities: ${form.amenities.length ? form.amenities.join(", ") : "None given"}`,
+    `Current status: ${form.status}`,
+    `Main goal: ${form.goal}`,
   ];
-  if (form.message.trim()) lines.push(`Détails : ${form.message.trim()}`);
+  if (form.message.trim()) lines.push(`Details: ${form.message.trim()}`);
   return lines.join("\n");
 }
 
@@ -191,7 +191,7 @@ export function EstimateQuiz() {
         <div className="relative">
           <Image alt="J&M Housing" className="h-8 w-auto" src={logo} />
           <p className="mt-1 text-[10px] text-white/40 uppercase tracking-[0.18em]">
-            Estimation gratuite
+            Free estimate
           </p>
         </div>
 
@@ -230,7 +230,7 @@ export function EstimateQuiz() {
         </div>
 
         <p className="relative text-[12px] text-white/40 leading-relaxed">
-          Réponse personnalisée sous 24h, sans engagement.
+          A personal reply within 24h, no commitment.
         </p>
       </div>
 
@@ -242,17 +242,17 @@ export function EstimateQuiz() {
               <CheckCircle2 size={30} strokeWidth={1.5} />
             </span>
             <h1 className="mt-6 font-serif font-medium text-3xl tracking-tight">
-              Merci{form.firstName ? `, ${form.firstName}` : ""} !
+              Thank you{form.firstName ? `, ${form.firstName}` : ""}!
             </h1>
             <p className="mt-4 max-w-sm text-[15px] text-ink/65 leading-relaxed">
-              Votre demande d&rsquo;estimation a bien été reçue. Notre équipe
-              l&rsquo;étudie et revient vers vous sous 24h, sans engagement.
+              Your estimate request has been received. Our team is reviewing
+              it and will get back to you within 24h, no commitment.
             </p>
             <a
               className="mt-8 inline-flex bg-linear-to-br from-gold to-gold-dark px-8 py-3.5 font-bold text-navy text-xs uppercase tracking-wide transition-opacity hover:opacity-90"
               href="/"
             >
-              Retour à l&rsquo;accueil
+              Back to home
             </a>
           </div>
         ) : (
@@ -260,7 +260,7 @@ export function EstimateQuiz() {
             <div className="mb-6 shrink-0 lg:hidden">
               <div className="flex items-center justify-between text-[11px] text-ink/45 uppercase tracking-[0.16em]">
                 <span>
-                  Étape {step} / {TOTAL_STEPS}
+                  Step {step} / {TOTAL_STEPS}
                 </span>
                 <span>{Math.round((step / TOTAL_STEPS) * 100)}%</span>
               </div>
@@ -277,12 +277,12 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Vos coordonnées
+                    Your details
                   </p>
-                  <h1 className={titleClass}>Pour que l&rsquo;on puisse vous recontacter.</h1>
+                  <h1 className={titleClass}>So we can get back to you.</h1>
                   <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
-                      <label className={labelClass}>Prénom</label>
+                      <label className={labelClass}>First name</label>
                       <input
                         className={inputClass}
                         onChange={(e) => update("firstName", e.target.value)}
@@ -291,7 +291,7 @@ export function EstimateQuiz() {
                       />
                     </div>
                     <div>
-                      <label className={labelClass}>Nom</label>
+                      <label className={labelClass}>Last name</label>
                       <input
                         className={inputClass}
                         onChange={(e) => update("lastName", e.target.value)}
@@ -300,7 +300,7 @@ export function EstimateQuiz() {
                       />
                     </div>
                     <div>
-                      <label className={labelClass}>Téléphone / WhatsApp</label>
+                      <label className={labelClass}>Phone / WhatsApp</label>
                       <input
                         className={inputClass}
                         onChange={(e) => update("phone", e.target.value)}
@@ -314,7 +314,7 @@ export function EstimateQuiz() {
                       <input
                         className={inputClass}
                         onChange={(e) => update("email", e.target.value)}
-                        placeholder="vous@email.com"
+                        placeholder="you@email.com"
                         type="email"
                         value={form.email}
                       />
@@ -327,9 +327,9 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Votre bien
+                    Your property
                   </p>
-                  <h1 className={titleClass}>Quel type de propriété possédez-vous ?</h1>
+                  <h1 className={titleClass}>What type of property do you own?</h1>
                   <div className="mt-6 grid grid-cols-2 gap-3">
                     {propertyTypes.map(({ value, icon: Icon }) => (
                       <button
@@ -358,9 +358,9 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Localisation
+                    Location
                   </p>
-                  <h1 className={titleClass}>Où se trouve votre bien à Marrakech ?</h1>
+                  <h1 className={titleClass}>Where is your property in Marrakech?</h1>
                   <div className="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
                     {locations.map((loc) => (
                       <button
@@ -385,9 +385,9 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Capacité
+                    Capacity
                   </p>
-                  <h1 className={titleClass}>Combien de chambres compte-t-il ?</h1>
+                  <h1 className={titleClass}>How many bedrooms does it have?</h1>
                   <div className="mt-6 flex flex-wrap gap-2.5">
                     {bedroomOptions.map((n) => (
                       <button
@@ -411,10 +411,10 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Équipements
+                    Amenities
                   </p>
-                  <h1 className={titleClass}>Quels équipements propose-t-il ?</h1>
-                  <p className="mt-1.5 text-[13px] text-ink/50">Plusieurs choix possibles.</p>
+                  <h1 className={titleClass}>Which amenities does it offer?</h1>
+                  <p className="mt-1.5 text-[13px] text-ink/50">Select all that apply.</p>
                   <div className="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                     {amenitiesList.map((amenity) => {
                       const active = form.amenities.includes(amenity);
@@ -444,9 +444,9 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Situation actuelle
+                    Current situation
                   </p>
-                  <h1 className={titleClass}>Quel est le statut actuel du bien ?</h1>
+                  <h1 className={titleClass}>What's the property's current status?</h1>
                   <div className="mt-6 flex flex-col gap-2.5">
                     {statusOptions.map((option) => (
                       <button
@@ -471,9 +471,9 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Votre objectif
+                    Your goal
                   </p>
-                  <h1 className={titleClass}>Qu&rsquo;attendez-vous avant tout de nous ?</h1>
+                  <h1 className={titleClass}>What matters most to you?</h1>
                   <div className="mt-6 flex flex-col gap-2.5">
                     {goalOptions.map((option) => (
                       <button
@@ -498,22 +498,22 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Dernière étape
+                    Last step
                   </p>
-                  <h1 className={titleClass}>Un détail à ajouter ?</h1>
+                  <h1 className={titleClass}>Anything else to add?</h1>
                   <textarea
                     className={`${inputClass} mt-5 min-h-20 resize-none`}
                     onChange={(e) => update("message", e.target.value)}
-                    placeholder="Facultatif — tout ce qui pourrait nous aider à préparer votre estimation."
+                    placeholder="Optional — anything that could help us prepare your estimate."
                     value={form.message}
                   />
 
                   <div className="mt-5 space-y-1.5 border border-ink/10 bg-sand/25 p-4 text-[13px]">
                     <p className="mb-1.5 font-semibold text-[11px] text-ink/45 uppercase tracking-[0.16em]">
-                      Récapitulatif
+                      Summary
                     </p>
                     <p className="text-ink/70">
-                      {form.propertyType} · {form.bedrooms} ch. · {form.location}
+                      {form.propertyType} · {form.bedrooms} bed · {form.location}
                     </p>
                     <p className="text-ink/70">{form.status}</p>
                     <p className="text-ink/70">{form.goal}</p>
@@ -521,7 +521,7 @@ export function EstimateQuiz() {
 
                   {submitEstimate.isError && (
                     <p className="mt-3 text-[13px] text-red-600">
-                      Une erreur est survenue. Vérifiez vos coordonnées et réessayez.
+                      Something went wrong. Check your details and try again.
                     </p>
                   )}
                 </div>
@@ -537,7 +537,7 @@ export function EstimateQuiz() {
                 type="button"
               >
                 <ArrowLeft size={16} strokeWidth={1.5} />
-                Retour
+                Back
               </button>
 
               {step < TOTAL_STEPS ? (
@@ -547,7 +547,7 @@ export function EstimateQuiz() {
                   onClick={() => setStep((s) => Math.min(TOTAL_STEPS, s + 1))}
                   type="button"
                 >
-                  Continuer
+                  Continue
                   <ArrowRight size={16} strokeWidth={1.5} />
                 </button>
               ) : (
@@ -557,7 +557,7 @@ export function EstimateQuiz() {
                   onClick={handleSubmit}
                   type="button"
                 >
-                  {submitEstimate.isPending ? "Envoi..." : "Envoyer ma demande"}
+                  {submitEstimate.isPending ? "Sending..." : "Send my request"}
                 </button>
               )}
             </div>

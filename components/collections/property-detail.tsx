@@ -36,7 +36,7 @@ export function PropertyDetail({ property }: { property: Property }) {
             href="/collection"
           >
             <ArrowLeft size={16} strokeWidth={1.5} />
-            Retour
+            Back
           </Link>
         </div>
       </div>
@@ -74,7 +74,7 @@ export function PropertyDetail({ property }: { property: Property }) {
                 {property.location}, Marrakech
                 <span className="mx-1 text-ink/25">·</span>
                 <Bed size={14} strokeWidth={1.5} />
-                {property.beds} chambres
+                {property.beds} bedrooms
               </p>
             </div>
             <span className="flex items-center gap-1.5 text-ink text-sm">
@@ -100,7 +100,7 @@ export function PropertyDetail({ property }: { property: Property }) {
               <section className="mt-12">
                 <h2 className="flex items-center gap-3 font-serif font-semibold text-xl tracking-tight">
                   <span className="h-5 w-1 bg-gold-dark" />
-                  Équipements
+                  Amenities
                 </h2>
                 <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {property.amenities.map(({ key, label }) => {
@@ -123,7 +123,7 @@ export function PropertyDetail({ property }: { property: Property }) {
               <section className="mt-12">
                 <h2 className="flex items-center gap-3 font-serif font-semibold text-xl tracking-tight">
                   <span className="h-5 w-1 bg-gold-dark" />
-                  Services inclus
+                  Included services
                 </h2>
                 <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {property.includedServices.map((service) => (

@@ -3,8 +3,8 @@ import SiteHeader from "@/components/navbar";
 import { EstimateQuiz } from "@/components/estimate-quiz";
 
 export const metadata: Metadata = {
-  title: "Estimation Gratuite | J&M Housing",
-  description: "Obtenez une estimation gratuite pour votre propriété à Marrakech en quelques étapes.",
+  title: "Free Estimate | J&M Housing",
+  description: "Get a free estimate for your property in Marrakech in just a few steps.",
 };
 
 export default function EstimationPage() {

@@ -18,14 +18,14 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "J&M Housing | Gestion locative à Marrakech",
-  description: "Gestion locative haut de gamme pour propriétaires à Marrakech et au Maroc.",
+  title: "J&M Housing | Rental Management in Marrakech",
+  description: "Premium rental management for property owners in Marrakech and across Morocco.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="fr"
+      lang="en"
       className={`h-full antialiased ${playfairDisplay.variable} ${manrope.variable}`}
     >
       <body className="min-h-full flex flex-col">

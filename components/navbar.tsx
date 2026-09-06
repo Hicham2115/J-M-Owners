@@ -85,7 +85,7 @@ export default function SiteHeader() {
             render={<a href="/estimation" />}
             nativeButton={false}
           >
-            Estimation Gratuite
+            Free Estimate
           </Button>
 
           {/* Mobile menu trigger */}
@@ -95,9 +95,7 @@ export default function SiteHeader() {
                 className="relative size-11 text-white hover:bg-white/10 hover:text-white lg:hidden"
                 size="icon"
                 variant="ghost"
-                aria-label={
-                  mobileOpen ? "Fermer la navigation" : "Ouvrir la navigation"
-                }
+                aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
               >
                 <Menu
                   className={`absolute transition-all duration-200 ${mobileOpen ? "scale-50 opacity-0" : "scale-100 opacity-100"}`}
@@ -139,7 +137,7 @@ export default function SiteHeader() {
                   href="/estimation"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Estimation Gratuite
+                  Free Estimate
                 </a>
               </div>
             </PopoverContent>

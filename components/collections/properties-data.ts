@@ -104,10 +104,10 @@ export interface Property {
 }
 
 const baseAmenities: Amenity[] = [
-  { key: "wifi", label: "Wifi haut débit" },
-  { key: "ac", label: "Climatisation" },
-  { key: "parking", label: "Parking privé" },
-  { key: "kitchen", label: "Cuisine équipée" },
+  { key: "wifi", label: "High-speed wifi" },
+  { key: "ac", label: "Air conditioning" },
+  { key: "parking", label: "Private parking" },
+  { key: "kitchen", label: "Equipped kitchen" },
 ];
 
 function amenitiesFor(type: PropertyType, pool: boolean): Amenity[] {
@@ -115,20 +115,20 @@ function amenitiesFor(type: PropertyType, pool: boolean): Amenity[] {
   if (pool) {
     list.push({
       key: "pool",
-      label: type === "Villa" ? "Piscine privée" : "Piscine partagée",
+      label: type === "Villa" ? "Private pool" : "Shared pool",
     });
   }
   if (type === "Villa") {
-    list.push({ key: "tv", label: "Télévision" });
+    list.push({ key: "tv", label: "Television" });
   }
   return list;
 }
 
 const includedServices = [
-  "Ménage quotidien",
-  "Accueil personnalisé",
-  "Linge de maison inclus",
-  "Assistance 24/7",
+  "Daily housekeeping",
+  "Personal check-in",
+  "Linens included",
+  "24/7 support",
 ];
 
 export const properties: Property[] = [
@@ -143,8 +143,8 @@ export const properties: Property[] = [
     top: true,
     description: "4-bedroom villa with sweeping views in the Palmeraie.",
     descriptionLong: [
-      "Villa de 4 chambres nichée dans la Palmeraie, offrant de larges espaces de vie et une vue dégagée sur les palmiers environnants.",
-      "Piscine privée, jardin paysager et sécurité 24h/24. Idéale pour des séjours en famille ou entre amis, à quelques minutes du centre-ville.",
+      "A 4-bedroom villa tucked into the Palmeraie, with generous living spaces and open views over the surrounding palm groves.",
+      "Private pool, landscaped garden and 24/7 security. Ideal for family or group stays, just minutes from the city centre.",
     ],
     amenities: amenitiesFor("Villa", true),
     includedServices,
@@ -163,8 +163,8 @@ export const properties: Property[] = [
     top: true,
     description: "Contemporary 5-bedroom villa in the Noria Golf residence.",
     descriptionLong: [
-      "Villa contemporaine de 5 chambres au sein de la résidence Noria Golf, alliant architecture moderne et confort haut de gamme.",
-      "Grande piscine privée, terrasse spacieuse et vue sur le golf. Parfaite pour les grands groupes en quête d'espace et de tranquillité.",
+      "A contemporary 5-bedroom villa within the Noria Golf residence, combining modern architecture with high-end comfort.",
+      "Large private pool, spacious terrace and golf-course views. Perfect for larger groups seeking space and quiet.",
     ],
     amenities: amenitiesFor("Villa", true),
     includedServices,
@@ -183,8 +183,8 @@ export const properties: Property[] = [
     top: true,
     description: "Prestige 4-bedroom villa facing the Amelkis golf course.",
     descriptionLong: [
-      "Villa de prestige avec 4 chambres, face au golf d'Amelkis. Un cadre d'exception pour un séjour alliant détente et raffinement.",
-      "Piscine privée chauffable, salon d'été et service de conciergerie disponible sur demande.",
+      "A prestige 4-bedroom villa facing the Amelkis golf course. An exceptional setting for a stay that blends relaxation and refinement.",
+      "Heatable private pool, summer lounge and concierge service available on request.",
     ],
     amenities: amenitiesFor("Villa", true),
     includedServices,
@@ -202,8 +202,8 @@ export const properties: Property[] = [
     pool: true,
     description: "4-bedroom family villa with a garden, in Targa.",
     descriptionLong: [
-      "Villa familiale de 4 chambres avec jardin, située dans le quartier calme de Targa.",
-      "Piscine privée, espace barbecue et grand salon extérieur — idéale pour des vacances en famille.",
+      "A 4-bedroom family villa with a garden, set in the quiet Targa neighbourhood.",
+      "Private pool, barbecue area and large outdoor lounge — ideal for a family holiday.",
     ],
     amenities: amenitiesFor("Villa", true),
     includedServices,
@@ -221,8 +221,8 @@ export const properties: Property[] = [
     pool: true,
     description: "Family villa with an olive-tree garden, Route de l'Ourika.",
     descriptionLong: [
-      "Villa de 5 chambres entourée d'une oliveraie, sur la Route de l'Ourika, au calme et proche de la nature.",
-      "Grande piscine, terrasse ombragée et vue sur l'Atlas. Un havre de paix à quelques minutes de Marrakech.",
+      "A 5-bedroom villa surrounded by an olive grove on the Route de l'Ourika, peaceful and close to nature.",
+      "Large pool, shaded terrace and Atlas mountain views. A haven of calm just minutes from Marrakech.",
     ],
     amenities: amenitiesFor("Villa", true),
     includedServices,
@@ -240,8 +240,8 @@ export const properties: Property[] = [
     pool: false,
     description: "Modern 2-bedroom apartment in the heart of Guéliz.",
     descriptionLong: [
-      "Appartement moderne de 2 chambres, au cœur de Guéliz, à distance de marche des cafés, restaurants et commerces.",
-      "Décoration soignée, cuisine entièrement équipée et balcon lumineux.",
+      "A modern 2-bedroom apartment in the heart of Guéliz, within walking distance of cafés, restaurants and shops.",
+      "Thoughtful decor, a fully equipped kitchen and a bright balcony.",
     ],
     amenities: amenitiesFor("Apartment", false),
     includedServices,
@@ -259,8 +259,8 @@ export const properties: Property[] = [
     pool: false,
     description: "Bright 2-bedroom apartment, walking distance to Guéliz.",
     descriptionLong: [
-      "Appartement lumineux de 2 chambres, à deux pas de Guéliz. Idéal pour un séjour urbain confortable.",
-      "Finitions modernes, cuisine équipée et emplacement central proche de toutes commodités.",
+      "A bright 2-bedroom apartment, just steps from Guéliz. Ideal for a comfortable city stay.",
+      "Modern finishes, an equipped kitchen and a central location close to every amenity.",
     ],
     amenities: amenitiesFor("Apartment", false),
     includedServices,
@@ -278,8 +278,8 @@ export const properties: Property[] = [
     pool: false,
     description: "2-bedroom apartment in the quiet Hivernage district.",
     descriptionLong: [
-      "Appartement de 2 chambres dans le quartier résidentiel et calme de l'Hivernage.",
-      "Proche des grands hôtels et des jardins de la Ménara, avec un accès rapide au centre-ville.",
+      "A 2-bedroom apartment in the quiet, residential Hivernage district.",
+      "Close to major hotels and the Menara gardens, with quick access to the city centre.",
     ],
     amenities: amenitiesFor("Apartment", false),
     includedServices,
@@ -297,8 +297,8 @@ export const properties: Property[] = [
     pool: false,
     description: "Spacious 3-bedroom duplex in central Guéliz.",
     descriptionLong: [
-      "Duplex spacieux de 3 chambres au cœur de Guéliz, réparti sur deux niveaux pour plus d'intimité.",
-      "Cuisine américaine équipée, salon double hauteur et terrasse privative.",
+      "A spacious 3-bedroom duplex in central Guéliz, spread across two levels for extra privacy.",
+      "Equipped open-plan kitchen, double-height living room and a private terrace.",
     ],
     amenities: amenitiesFor("Apartment", false),
     includedServices,
@@ -316,8 +316,8 @@ export const properties: Property[] = [
     pool: true,
     description: "2-bedroom residence apartment with shared pool, Prestigia.",
     descriptionLong: [
-      "Appartement de 2 chambres dans la résidence Prestigia. Équipé avec machine à café premium, cuisine design et finitions modernes.",
-      "Résidence avec piscine commune, sécurité 24h/24 et parking privé. Proche du golf de Marrakech et des commerces.",
+      "A 2-bedroom apartment in the Prestigia residence. Fitted with a premium coffee machine, designer kitchen and modern finishes.",
+      "A residence with a shared pool, 24/7 security and private parking. Close to the Marrakech golf course and shops.",
     ],
     amenities: amenitiesFor("Apartment", true),
     includedServices,
@@ -335,8 +335,8 @@ export const properties: Property[] = [
     pool: true,
     description: "2-bedroom residence apartment with shared pool, Prestigia.",
     descriptionLong: [
-      "Appartement de 2 chambres dans la résidence Prestigia. Équipé avec machine à café premium, cuisine design et finitions modernes.",
-      "Résidence avec piscine commune, sécurité 24h/24 et parking privé. Proche du golf de Marrakech et des commerces.",
+      "A 2-bedroom apartment in the Prestigia residence. Fitted with a premium coffee machine, designer kitchen and modern finishes.",
+      "A residence with a shared pool, 24/7 security and private parking. Close to the Marrakech golf course and shops.",
     ],
     amenities: amenitiesFor("Apartment", true),
     includedServices,
@@ -360,8 +360,8 @@ export const properties: Property[] = [
     pool: true,
     description: "2-bedroom residence apartment with shared pool, Prestigia.",
     descriptionLong: [
-      "Spacieux appartement de 3 chambres dans la résidence Prestigia Saphir. Équipé avec machine à café premium, cuisine design et finitions modernes.",
-      "Résidence avec piscine commune, sécurité 24h/24 et parking privé. Proche du golf de Marrakech et des commerces.",
+      "A spacious 3-bedroom apartment in the Prestigia Saphir residence. Fitted with a premium coffee machine, designer kitchen and modern finishes.",
+      "A residence with a shared pool, 24/7 security and private parking. Close to the Marrakech golf course and shops.",
     ],
     amenities: amenitiesFor("Apartment", true),
     includedServices,
