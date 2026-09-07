@@ -5,7 +5,7 @@ export const hero = {
     titleLine2: "Our Expertise",
     description:
       "We take care of everything: bookings, guests, cleaning, maintenance and protection — while maximizing your rental income.",
-    ctaEstimate: "Estimation Gratuite de Revenus",
+    ctaEstimate: "Free Revenue Estimate",
     ctaServices: "View Our Services",
   },
   fr: {
