@@ -1,4 +1,8 @@
+"use client";
+
 import { Star } from "lucide-react";
+import { useDict } from "@/lib/i18n/context";
+import { testimonials as testimonialsDict } from "@/lib/i18n/dictionaries/testimonials";
 
 const breakdown = [
   { score: "5.0", count: 82 },
@@ -7,41 +11,6 @@ const breakdown = [
 
 const totalReviews = breakdown.reduce((sum, row) => sum + row.count, 0);
 const maxCount = Math.max(...breakdown.map((row) => row.count));
-
-const categories = [
-  { score: 4.9, label: "Communication" },
-  { score: 4.8, label: "Responsiveness" },
-  { score: 4.9, label: "Property care" },
-  { score: 4.7, label: "Value for money" },
-  { score: 4.8, label: "Reporting" },
-];
-
-const reviews = [
-  {
-    name: "Sophie L.",
-    initials: "SL",
-    timeAgo: "2 months ago",
-    rating: 5.0,
-    text: "After years of dealing with empty weeks between bookings, I finally found a team that fixed it at the root. Occupancy hasn't dropped since, and the monthly report is genuinely useful.",
-    photos: 2,
-  },
-  {
-    name: "Karim B.",
-    initials: "KB",
-    timeAgo: "4 months ago",
-    rating: 4.0,
-    text: "Clear communication, clean handovers, deadlines respected to the day. Exactly the kind of reporting my accountant needed. Only downside: it took a while to get the first inspection scheduled.",
-    reply:
-      "Thanks Karim — we've since added a second inspector for the Palmeraie route so first visits happen within 48 hours.",
-  },
-  {
-    name: "Amal R.",
-    initials: "AR",
-    timeAgo: "1 month ago",
-    rating: 5.0,
-    text: "A tenant left a tap running for two days. I found out from the monthly report, not from a flooded ceiling.",
-  },
-];
 
 function Stars({
   rating,
@@ -68,6 +37,7 @@ function Stars({
 }
 
 export function Testimonials() {
+  const t = useDict(testimonialsDict);
   return (
     <section
       className="bg-white px-5 py-14 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
@@ -76,10 +46,10 @@ export function Testimonials() {
       <div className="mx-auto max-w-4xl">
         <p className="mb-5 flex items-center gap-3 font-semibold text-gold-dark text-xs uppercase tracking-[0.28em]">
           <span className="h-px w-8 bg-gold-dark" />
-          Testimonials
+          {t.eyebrow}
         </p>
         <h2 className="max-w-xl font-serif font-medium text-4xl leading-[1.12] tracking-tight sm:text-5xl">
-          Owners who handed us <span className=" text-gold-dark">the keys</span>
+          {t.headingBefore} <span className=" text-gold-dark">{t.headingHighlight}</span>
           .
         </h2>
 
@@ -91,7 +61,7 @@ export function Testimonials() {
               </p>
               <Stars className="mt-2.5" rating={4.9} size={18} />
               <p className="mt-2.5 text-[13px] text-ink/55">
-                {totalReviews} reviews
+                {totalReviews} {t.reviewsLabel}
               </p>
             </div>
             <div className="hidden h-16 w-px bg-ink/10 sm:block" />
@@ -108,7 +78,7 @@ export function Testimonials() {
                     {score}
                   </span>
                   <span className="w-16 shrink-0 text-[13px] text-ink/55">
-                    {count} reviews
+                    {count} {t.reviewsLabel}
                   </span>
                 </div>
               ))}
@@ -116,7 +86,7 @@ export function Testimonials() {
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3 border-ink/10 border-t pt-6">
-            {categories.map(({ score, label }) => (
+            {t.categories.map(({ score, label }) => (
               <div
                 className="flex items-center gap-2 border border-ink/15 bg-white px-4 py-2 text-sm transition-colors duration-300 hover:border-gold-dark/40"
                 key={label}
@@ -129,7 +99,7 @@ export function Testimonials() {
         </div>
 
         <div className="mt-4 divide-y divide-ink/10 border-ink/10 border-t">
-          {reviews.map(
+          {t.items.map(
             ({ name, initials, timeAgo, rating, text, photos, reply }) => (
               <div
                 className="-mx-4 flex flex-col gap-4 px-4 py-8 transition-colors duration-300 hover:bg-sand/15 sm:flex-row sm:gap-6"
@@ -143,7 +113,7 @@ export function Testimonials() {
                     <p className="font-semibold text-ink text-sm">{name}</p>
                     <p className="mt-0.5 flex items-center gap-1.5 text-[12px] text-ink/45">
                       <span className="inline-block size-1 rotate-45 bg-gold-dark/60" />
-                      Verified owner · {timeAgo}
+                      {t.verifiedOwner} · {timeAgo}
                     </p>
                   </div>
                 </div>
@@ -164,7 +134,7 @@ export function Testimonials() {
                           className="flex size-16 items-center justify-center border border-ink/15 border-dashed bg-sand/40 text-[9px] text-ink/35 uppercase tracking-wide"
                           key={i}
                         >
-                          Photo
+                          {t.photoLabel}
                         </div>
                       ))}
                     </div>
@@ -172,7 +142,7 @@ export function Testimonials() {
                   {reply ? (
                     <div className="mt-4 border-gold-dark/40 border-l-2 pl-4">
                       <p className="font-semibold text-[12px] text-gold-dark uppercase tracking-wide">
-                        J&amp;M Housing replied
+                        {t.repliedLabel}
                       </p>
                       <p className="mt-1 text-[13px] text-ink/60 leading-relaxed">
                         {reply}

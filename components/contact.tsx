@@ -4,6 +4,8 @@ import { useForm } from "@tanstack/react-form";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSubmitEstimateRequest } from "@/hooks/use-contact-form";
+import { useDict } from "@/lib/i18n/context";
+import { contact as contactDict } from "@/lib/i18n/dictionaries/contact";
 import { contactSchema, type ContactInput } from "@/lib/schemas/contact";
 
 const fieldClass =
@@ -11,15 +13,16 @@ const fieldClass =
 const labelClass =
   "mb-2 block font-semibold text-[11px] text-gold/70 uppercase tracking-[0.16em]";
 
-function fieldError(errors: unknown[]) {
+function fieldError(errors: unknown[], fallback: string) {
   const first = errors[0];
   if (!first) return null;
   return typeof first === "string"
     ? first
-    : ((first as { message?: string })?.message ?? "Invalid value");
+    : ((first as { message?: string })?.message ?? fallback);
 }
 
 export function Contact() {
+  const t = useDict(contactDict);
   const submitEstimate = useSubmitEstimateRequest();
 
   const form = useForm({
@@ -45,34 +48,33 @@ export function Contact() {
         <div>
           <p className="mb-5 flex items-center gap-3 font-semibold text-gold text-xs uppercase tracking-[0.28em]">
             <span className="h-px w-8 bg-gold" />
-            Get started
+            {t.eyebrow}
           </p>
           <h2 className="font-serif font-medium text-4xl leading-[1.12] tracking-tight sm:text-5xl">
-            Request your{" "}
-            <span className=" text-gold">free revenue estimate</span>.
+            {t.headingBefore}{" "}
+            <span className=" text-gold">{t.headingHighlight}</span>.
           </h2>
           <p className="mt-6 max-w-sm text-[15px] text-white/60 leading-relaxed">
-            Tell us about your property and we&rsquo;ll come back with an honest
-            occupancy and revenue projection — no obligation, within 24 hours.
+            {t.intro}
           </p>
           <div className="mt-10 space-y-4 border-white/15 border-t pt-8">
             <a
               className="flex items-center gap-3 text-sm text-white/80 transition-colors hover:text-gold"
-              href="tel:+212600000000"
+              href="tel:+212706089488"
             >
               <Phone className="text-gold" size={16} strokeWidth={1.5} />
-              +212 6 00 00 00 00
+              {t.phone}
             </a>
             <a
               className="flex items-center gap-3 text-sm text-white/80 transition-colors hover:text-gold"
-              href="mailto:owners@jmhousing.ma"
+              href="mailto:contact@conciergerie-marrakech.com"
             >
               <Mail className="text-gold" size={16} strokeWidth={1.5} />
-              owners@jmhousing.ma
+              {t.email}
             </a>
             <p className="flex items-center gap-3 text-sm text-white/80">
               <MapPin className="text-gold" size={16} strokeWidth={1.5} />
-              Gueliz, Marrakech, Morocco
+              {t.address}
             </p>
           </div>
         </div>
@@ -92,18 +94,18 @@ export function Contact() {
               {(field) => (
                 <div>
                   <label className={labelClass} htmlFor={field.name}>
-                    Full name
+                    {t.fullNameLabel}
                   </label>
                   <input
                     className={fieldClass}
                     id={field.name}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    placeholder="Sophie Laurent"
+                    placeholder={t.fullNamePlaceholder}
                     value={field.state.value}
                   />
-                  {fieldError(field.state.meta.errors) && (
+                  {fieldError(field.state.meta.errors, t.invalidValue) && (
                     <p className="mt-1.5 text-[12px] text-red-300">
-                      {fieldError(field.state.meta.errors)}
+                      {fieldError(field.state.meta.errors, t.invalidValue)}
                     </p>
                   )}
                 </div>
@@ -117,19 +119,19 @@ export function Contact() {
               {(field) => (
                 <div>
                   <label className={labelClass} htmlFor={field.name}>
-                    Email
+                    {t.emailLabel}
                   </label>
                   <input
                     className={fieldClass}
                     id={field.name}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    placeholder="you@email.com"
+                    placeholder={t.emailPlaceholder}
                     type="email"
                     value={field.state.value}
                   />
-                  {fieldError(field.state.meta.errors) && (
+                  {fieldError(field.state.meta.errors, t.invalidValue) && (
                     <p className="mt-1.5 text-[12px] text-red-300">
-                      {fieldError(field.state.meta.errors)}
+                      {fieldError(field.state.meta.errors, t.invalidValue)}
                     </p>
                   )}
                 </div>
@@ -141,13 +143,13 @@ export function Contact() {
             {(field) => (
               <div>
                 <label className={labelClass} htmlFor={field.name}>
-                  Phone (optional)
+                  {t.phoneLabel}
                 </label>
                 <input
                   className={fieldClass}
                   id={field.name}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="+212 6 00 00 00 00"
+                  placeholder={t.phonePlaceholder}
                   type="tel"
                   value={field.state.value}
                 />
@@ -162,18 +164,18 @@ export function Contact() {
             {(field) => (
               <div>
                 <label className={labelClass} htmlFor={field.name}>
-                  Tell us about your property
+                  {t.messageLabel}
                 </label>
                 <textarea
                   className={`${fieldClass} min-h-24 resize-none`}
                   id={field.name}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="Location, property type, and what you're hoping to get out of management."
+                  placeholder={t.messagePlaceholder}
                   value={field.state.value}
                 />
-                {fieldError(field.state.meta.errors) && (
+                {fieldError(field.state.meta.errors, t.invalidValue) && (
                   <p className="mt-1.5 text-[12px] text-red-300">
-                    {fieldError(field.state.meta.errors)}
+                    {fieldError(field.state.meta.errors, t.invalidValue)}
                   </p>
                 )}
               </div>
@@ -187,7 +189,7 @@ export function Contact() {
                 disabled={isSubmitting}
                 type="submit"
               >
-                {isSubmitting ? "Sending…" : "Send request"}
+                {isSubmitting ? t.sending : t.sendRequest}
               </Button>
             )}
           </form.Subscribe>

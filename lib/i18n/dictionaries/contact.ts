@@ -1,0 +1,46 @@
+export const contact = {
+  en: {
+    eyebrow: "Get started",
+    headingBefore: "Request your",
+    headingHighlight: "free revenue estimate",
+    intro:
+      "Tell us about your property and we’ll come back with an honest occupancy and revenue projection — no obligation, within 24 hours.",
+    phone: "+212 7 06 08 94 88",
+    email: "contact@conciergerie-marrakech.com",
+    address: "Gueliz, Marrakech, Morocco",
+    fullNameLabel: "Full name",
+    fullNamePlaceholder: "Sophie Laurent",
+    emailLabel: "Email",
+    emailPlaceholder: "you@email.com",
+    phoneLabel: "Phone (optional)",
+    phonePlaceholder: "+212 7 06 08 94 88",
+    messageLabel: "Tell us about your property",
+    messagePlaceholder:
+      "Location, property type, and what you're hoping to get out of management.",
+    invalidValue: "Invalid value",
+    sending: "Sending…",
+    sendRequest: "Send request",
+  },
+  fr: {
+    eyebrow: "Commencer",
+    headingBefore: "Demandez votre",
+    headingHighlight: "estimation de revenus gratuite",
+    intro:
+      "Parlez-nous de votre bien et nous reviendrons vers vous avec une estimation honnête d'occupation et de revenus — sans engagement, sous 24 heures.",
+    phone: "+212 7 06 08 94 88",
+    email: "contact@conciergerie-marrakech.com",
+    address: "Guéliz, Marrakech, Maroc",
+    fullNameLabel: "Nom complet",
+    fullNamePlaceholder: "Sophie Laurent",
+    emailLabel: "E-mail",
+    emailPlaceholder: "vous@email.com",
+    phoneLabel: "Téléphone (optionnel)",
+    phonePlaceholder: "+212 7 06 08 94 88",
+    messageLabel: "Parlez-nous de votre bien",
+    messagePlaceholder:
+      "Emplacement, type de bien, et ce que vous attendez de la gestion.",
+    invalidValue: "Valeur invalide",
+    sending: "Envoi…",
+    sendRequest: "Envoyer la demande",
+  },
+} as const;

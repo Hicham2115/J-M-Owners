@@ -1,5 +1,9 @@
+"use client";
+
 import { Search } from "lucide-react";
 import Image from "next/image";
+import { useDict } from "@/lib/i18n/context";
+import { collectionHero } from "@/lib/i18n/dictionaries/collectionHero";
 
 const stats = [
   { value: "06", label: "Homes we look after" },
@@ -7,13 +11,9 @@ const stats = [
   { value: "5", label: "Neighbourhoods we know well" },
 ];
 
-const searchFields = [
-  { label: "Location", value: "Where are you going?" },
-  { label: "Dates", value: "Check-in — Check-out" },
-  { label: "Guests", value: "2 adults" },
-];
-
 export function CollectionsHero() {
+  const t = useDict(collectionHero);
+  const searchFields = t.searchFields;
   return (
     <section className="relative bg-navy px-5 pt-36 pb-16 text-white sm:px-8 sm:pt-40 sm:pb-32 lg:px-12">
       <Image
@@ -30,16 +30,15 @@ export function CollectionsHero() {
       <div className="relative mx-auto max-w-2xl text-center">
         <p className="mb-5 flex items-center justify-center gap-3 font-semibold text-gold text-xs uppercase tracking-[0.28em]">
           <span className="h-px w-8 bg-gold" />
-          The collection
+          {t.eyebrow}
           <span className="h-px w-8 bg-gold" />
         </p>
         <h1 className="font-serif font-medium text-4xl leading-[1.12] tracking-tight sm:text-6xl">
-          Addresses we would happily{" "}
-          <span className="text-gold italic">stay in ourselves.</span>
+          {t.headline}{" "}
+          <span className="text-gold italic">{t.headlineEmphasis}</span>
         </h1>
         <p className="mx-auto mt-5 max-w-md text-[15px] text-white/70 leading-relaxed">
-          We choose these homes the way we'd choose our own — then look after
-          them, and the people who trust us with them, every single day.
+          {t.subtext}
         </p>
 
         {/* <div className="mx-auto mt-12 flex max-w-xl flex-wrap items-start justify-center gap-x-10 gap-y-6 border-white/15 border-t pt-8">
@@ -67,7 +66,7 @@ export function CollectionsHero() {
             </div>
           ))}
           <button
-            aria-label="Search"
+            aria-label={t.searchAriaLabel}
             className="flex items-center justify-center bg-linear-to-br from-gold to-gold-dark px-6 py-2.5 text-navy transition-opacity hover:opacity-90 sm:px-6 sm:py-3"
             type="button"
           >

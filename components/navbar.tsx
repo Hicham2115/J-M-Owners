@@ -17,18 +17,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
-const navigationLinks = [
-  { href: "/#home", label: "Home" },
-  // { href: "/collection", label: "Collection" },
-  { href: "/#services", label: "Our Services" },
-  { href: "/#how-it-works", label: "How It Works" },
-  { href: "/#testimonials", label: "Testimonials" },
-  { href: "/#about", label: "About" },
-  { href: "/#estimate", label: "Contact" },
-];
+import { useDict, useLocale } from "@/lib/i18n/context";
+import { nav } from "@/lib/i18n/dictionaries/nav";
 
 export default function SiteHeader() {
+  const t = useDict(nav);
+  const { locale, setLocale } = useLocale();
+  const navigationLinks = t.links;
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -49,11 +44,7 @@ export default function SiteHeader() {
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 md:px-8">
         {/* Brand */}
-        <a
-          className="flex items-center"
-          href="/"
-          aria-label="J&M Housing accueil"
-        >
+        <a className="flex items-center" href="/" aria-label={t.homeAriaLabel}>
           <Image
             alt="J&M Housing"
             className="h-12 w-auto"
@@ -80,12 +71,29 @@ export default function SiteHeader() {
 
         {/* Right side */}
         <div className="flex items-center gap-2">
+          <div className="mr-1 hidden items-center gap-0.5 border border-white/15 p-0.5 text-[11px] font-semibold uppercase tracking-wide lg:flex">
+            <button
+              className={`px-2 py-1 transition-colors ${locale === "en" ? "bg-gold text-navy" : "text-white/60 hover:text-white"}`}
+              onClick={() => setLocale("en")}
+              type="button"
+            >
+              EN
+            </button>
+            <button
+              className={`px-2 py-1 transition-colors ${locale === "fr" ? "bg-gold text-navy" : "text-white/60 hover:text-white"}`}
+              onClick={() => setLocale("fr")}
+              type="button"
+            >
+              FR
+            </button>
+          </div>
+
           <Button
             className="hidden h-auto bg-linear-to-br from-gold to-gold-dark py-3 font-bold text-white text-xs uppercase tracking-wide hover:opacity-90 px-6  lg:inline-flex"
             render={<a href="/estimation" />}
             nativeButton={false}
           >
-            Free Estimate
+            {t.freeEstimate}
           </Button>
 
           {/* Mobile menu trigger */}
@@ -95,7 +103,7 @@ export default function SiteHeader() {
                 className="relative size-11 text-white hover:bg-white/10 hover:text-white lg:hidden"
                 size="icon"
                 variant="ghost"
-                aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
+                aria-label={mobileOpen ? t.closeNav : t.openNav}
               >
                 <Menu
                   className={`absolute transition-all duration-200 ${mobileOpen ? "scale-50 opacity-0" : "scale-100 opacity-100"}`}
@@ -131,13 +139,29 @@ export default function SiteHeader() {
                 </NavigationMenuList>
               </NavigationMenu>
 
-              <div className="mt-2 border-white/10 border-t p-2">
+              <div className="mt-2 flex items-center gap-2 border-white/10 border-t p-2">
+                <div className="flex items-center gap-0.5 border border-white/15 p-0.5 text-[11px] font-semibold uppercase tracking-wide">
+                  <button
+                    className={`px-2.5 py-1.5 transition-colors ${locale === "en" ? "bg-gold text-navy" : "text-white/60 hover:text-white"}`}
+                    onClick={() => setLocale("en")}
+                    type="button"
+                  >
+                    EN
+                  </button>
+                  <button
+                    className={`px-2.5 py-1.5 transition-colors ${locale === "fr" ? "bg-gold text-navy" : "text-white/60 hover:text-white"}`}
+                    onClick={() => setLocale("fr")}
+                    type="button"
+                  >
+                    FR
+                  </button>
+                </div>
                 <a
-                  className="flex h-auto items-center justify-center rounded-md bg-linear-to-br from-gold to-gold-dark px-6 py-3 font-bold text-white text-xs uppercase tracking-wide transition-opacity hover:opacity-90"
+                  className="flex h-auto flex-1 items-center justify-center rounded-md bg-linear-to-br from-gold to-gold-dark px-6 py-3 font-bold text-white text-xs uppercase tracking-wide transition-opacity hover:opacity-90"
                   href="/estimation"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Free Estimate
+                  {t.freeEstimate}
                 </a>
               </div>
             </PopoverContent>

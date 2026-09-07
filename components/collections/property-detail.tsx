@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ArrowLeft,
   Bed,
@@ -13,6 +15,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useDict, useLocale } from "@/lib/i18n/context";
+import { propertyDetail } from "@/lib/i18n/dictionaries/propertyDetail";
 import { BookingCard } from "./booking-card";
 import type { Property } from "./properties-data";
 
@@ -27,6 +31,8 @@ const amenityIcons = {
 } as const;
 
 export function PropertyDetail({ property }: { property: Property }) {
+  const t = useDict(propertyDetail);
+  const { locale } = useLocale();
   return (
     <div className="bg-sand/20">
       <div className="px-5 pt-28 pb-4 sm:px-8 sm:pt-32 lg:px-12">
@@ -36,7 +42,7 @@ export function PropertyDetail({ property }: { property: Property }) {
             href="/collection"
           >
             <ArrowLeft size={16} strokeWidth={1.5} />
-            Back
+            {t.back}
           </Link>
         </div>
       </div>
@@ -74,7 +80,7 @@ export function PropertyDetail({ property }: { property: Property }) {
                 {property.location}, Marrakech
                 <span className="mx-1 text-ink/25">·</span>
                 <Bed size={14} strokeWidth={1.5} />
-                {property.beds} bedrooms
+                {property.beds} {t.bedrooms}
               </p>
             </div>
             <span className="flex items-center gap-1.5 text-ink text-sm">
@@ -88,10 +94,10 @@ export function PropertyDetail({ property }: { property: Property }) {
               <section>
                 <h2 className="flex items-center gap-3 font-serif font-semibold text-xl tracking-tight">
                   <span className="h-5 w-1 bg-gold-dark" />
-                  Description
+                  {t.description}
                 </h2>
                 <div className="mt-4 space-y-4 text-[15px] text-ink/70 leading-relaxed">
-                  {property.descriptionLong.map((paragraph, index) => (
+                  {property.descriptionLong[locale].map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
                   ))}
                 </div>
@@ -100,7 +106,7 @@ export function PropertyDetail({ property }: { property: Property }) {
               <section className="mt-12">
                 <h2 className="flex items-center gap-3 font-serif font-semibold text-xl tracking-tight">
                   <span className="h-5 w-1 bg-gold-dark" />
-                  Amenities
+                  {t.amenities}
                 </h2>
                 <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {property.amenities.map(({ key, label }) => {
@@ -113,7 +119,7 @@ export function PropertyDetail({ property }: { property: Property }) {
                         <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-sand/60 text-gold-dark">
                           <Icon size={17} strokeWidth={1.5} />
                         </span>
-                        <span className="font-medium text-ink text-sm">{label}</span>
+                        <span className="font-medium text-ink text-sm">{label[locale]}</span>
                       </div>
                     );
                   })}
@@ -123,10 +129,10 @@ export function PropertyDetail({ property }: { property: Property }) {
               <section className="mt-12">
                 <h2 className="flex items-center gap-3 font-serif font-semibold text-xl tracking-tight">
                   <span className="h-5 w-1 bg-gold-dark" />
-                  Included services
+                  {t.includedServices}
                 </h2>
                 <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  {property.includedServices.map((service) => (
+                  {property.includedServices[locale].map((service) => (
                     <div
                       className="flex items-center gap-3 rounded-lg bg-gold-dark/8 px-4 py-3"
                       key={service}

@@ -5,8 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { properties } from "@/components/collections/properties-data";
+import { useDict } from "@/lib/i18n/context";
+import { showcase } from "@/lib/i18n/dictionaries/showcase";
 
 export function Showcase() {
+  const t = useDict(showcase);
   const trackRef = useRef<HTMLDivElement>(null);
 
   function scrollBy(direction: 1 | -1) {
@@ -25,17 +28,17 @@ export function Showcase() {
         <div>
           <p className="mb-5 flex items-center gap-3 font-semibold text-gold text-xs uppercase tracking-[0.28em]">
             <span className="h-px w-8 bg-gold" />
-            Our portfolio
+            {t.eyebrow}
           </p>
           <h2 className="max-w-lg font-serif font-medium text-4xl leading-[1.12] tracking-tight sm:text-5xl">
-            Properties that speak{" "}
-            <span className=" text-gold">for themselves</span>.
+            {t.headingBefore}{" "}
+            <span className=" text-gold">{t.headingHighlight}</span>.
           </h2>
         </div>
 
         <div className="flex items-center gap-3">
           <button
-            aria-label="Previous"
+            aria-label={t.prevAriaLabel}
             className="grid size-11 place-items-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold"
             onClick={() => scrollBy(-1)}
             type="button"
@@ -43,7 +46,7 @@ export function Showcase() {
             <ArrowLeft size={18} strokeWidth={1.5} />
           </button>
           <button
-            aria-label="Next"
+            aria-label={t.nextAriaLabel}
             className="grid size-11 place-items-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold"
             onClick={() => scrollBy(1)}
             type="button"

@@ -11,6 +11,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { useDict, useLocale } from "@/lib/i18n/context";
+import { propertyBrowser } from "@/lib/i18n/dictionaries/propertyBrowser";
 import { properties, type PropertyType } from "./properties-data";
 
 const typeFilters: Array<PropertyType | "All"> = [
@@ -30,6 +32,8 @@ function initialsOf(name: string) {
 }
 
 export function PropertyBrowser() {
+  const t = useDict(propertyBrowser);
+  const { locale } = useLocale();
   const [activeType, setActiveType] =
     useState<(typeof typeFilters)[number]>("All");
   const [poolOnly, setPoolOnly] = useState(false);
@@ -60,7 +64,7 @@ export function PropertyBrowser() {
                   onClick={() => setActiveType(type)}
                   type="button"
                 >
-                  {type}
+                  {t.typeLabels[type]}
                   <span
                     className={`absolute inset-x-0 bottom-0 h-px origin-center bg-gold-dark transition-transform duration-300 ease-out ${
                       active
@@ -82,7 +86,7 @@ export function PropertyBrowser() {
               type="button"
             >
               <Waves size={14} strokeWidth={1.5} />
-              Pool
+              {t.pool}
             </button>
             <button
               className={`flex items-center gap-1.5 transition-colors ${
@@ -92,14 +96,14 @@ export function PropertyBrowser() {
               type="button"
             >
               <Bed size={14} strokeWidth={1.5} />
-              3+ beds
+              {t.minBeds}
             </button>
             <button
               className="hidden items-center gap-1.5 text-ink/45 transition-colors hover:text-ink sm:flex"
               type="button"
             >
               <SlidersHorizontal size={14} strokeWidth={1.5} />
-              Filters
+              {t.filters}
             </button>
           </div>
         </div>
@@ -107,25 +111,25 @@ export function PropertyBrowser() {
         <div className="mt-7 flex items-center justify-between">
           <p className="text-ink/60 text-sm">
             <span className="font-serif text-ink">{filtered.length}</span>{" "}
-            {filtered.length === 1 ? "property" : "properties"} in the
-            collection
+            {filtered.length === 1 ? t.propertySingular : t.propertyPlural}{" "}
+            {t.inCollection}
           </p>
           <p className="hidden items-center gap-1.5 text-ink/45 text-xs sm:flex">
             <Star className="text-gold-dark" fill="currentColor" size={13} />
-            Sorted by relevance
+            {t.sortedByRelevance}
           </p>
         </div>
 
         {filtered.length === 0 ? (
           <p className="mt-16 text-center text-ink/50 text-sm">
-            No properties match these filters yet.
+            {t.noMatch}
           </p>
         ) : (
           <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((property) => (
               <div className="group relative" key={property.name}>
                 <button
-                  aria-label="Save to favourites"
+                  aria-label={t.saveToFavourites}
                   className="absolute top-3 right-3 z-10 grid size-11 place-items-center rounded-full bg-white/90 text-ink/60 transition-colors hover:text-gold-dark"
                   type="button"
                 >
@@ -154,7 +158,7 @@ export function PropertyBrowser() {
                     <div className="absolute inset-0 bg-linear-to-t from-navy/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     {property.top && (
                       <span className="absolute top-3 left-3 bg-gold-dark px-3 py-1 font-semibold text-[10px] text-white uppercase tracking-wide">
-                        Top rated
+                        {t.topRated}
                       </span>
                     )}
                   </div>
@@ -176,7 +180,7 @@ export function PropertyBrowser() {
                     {property.location}
                   </p>
                   <p className="mt-2 text-[13px] text-ink/60 leading-relaxed">
-                    {property.description}
+                    {property.description[locale]}
                   </p>
                 </Link>
               </div>

@@ -20,60 +20,30 @@ import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 import logo from "@/app/assets/logo.png";
 import { useSubmitEstimateRequest } from "@/hooks/use-contact-form";
+import { useDict } from "@/lib/i18n/context";
+import { estimateQuiz } from "@/lib/i18n/dictionaries/estimateQuiz";
 
 const TOTAL_STEPS = 8;
 
-const stepMeta: { label: string; icon: LucideIcon }[] = [
-  { label: "Your details", icon: User },
-  { label: "Property type", icon: HomeIcon },
-  { label: "Location", icon: MapPin },
-  { label: "Bedrooms", icon: Bed },
-  { label: "Amenities", icon: Sparkles },
-  { label: "Status", icon: ClipboardList },
-  { label: "Goal", icon: Target },
-  { label: "Summary", icon: Send },
+const stepIcons: LucideIcon[] = [
+  User,
+  HomeIcon,
+  MapPin,
+  Bed,
+  Sparkles,
+  ClipboardList,
+  Target,
+  Send,
 ];
 
-const propertyTypes = [
-  { value: "Villa", icon: HomeIcon },
-  { value: "Apartment", icon: Building2 },
-  { value: "Riad", icon: HomeIcon },
-  { value: "Duplex", icon: Building2 },
-];
-
-const locations = [
-  "Palmeraie",
-  "Guéliz",
-  "Hivernage",
-  "Amelkis",
-  "Targa",
-  "Prestigia",
-  "Medina",
-  "Other",
-];
+const propertyTypeIcons: Record<string, LucideIcon> = {
+  Villa: HomeIcon,
+  Apartment: Building2,
+  Riad: HomeIcon,
+  Duplex: Building2,
+};
 
 const bedroomOptions = ["1", "2", "3", "4", "5+"];
-
-const amenitiesList = [
-  "Pool",
-  "High-speed wifi",
-  "Air conditioning",
-  "Private parking",
-  "Garden",
-  "Clear view",
-];
-
-const statusOptions = [
-  "Currently vacant",
-  "Already rented (short or long term)",
-  "Occasional personal use",
-];
-
-const goalOptions = [
-  "Maximise rental income",
-  "Extra income, without the hassle",
-  "Peace of mind above all",
-];
 
 interface FormState {
   firstName: string;
@@ -137,6 +107,10 @@ function buildMessage(form: FormState) {
   return lines.join("\n");
 }
 
+function labelFor(list: readonly { value: string; label: string }[], value: string) {
+  return list.find((item) => item.value === value)?.label ?? value;
+}
+
 function fieldButtonClass(active: boolean) {
   return `flex items-center gap-3 border px-4 py-3.5 text-left transition-colors duration-200 ${
     active
@@ -152,6 +126,7 @@ const eyebrowClass = "mb-2 flex items-center gap-3 font-semibold text-gold-dark 
 const titleClass = "font-serif font-semibold text-2xl tracking-tight sm:text-3xl";
 
 export function EstimateQuiz() {
+  const t = useDict(estimateQuiz);
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormState>(initialState);
   const [done, setDone] = useState(false);
@@ -191,17 +166,17 @@ export function EstimateQuiz() {
         <div className="relative">
           <Image alt="J&M Housing" className="h-8 w-auto" src={logo} />
           <p className="mt-1 text-[10px] text-white/40 uppercase tracking-[0.18em]">
-            Free estimate
+            {t.panelTag}
           </p>
         </div>
 
         <div className="relative space-y-0.5">
-          {stepMeta.map((meta, index) => {
+          {t.steps.map((label, index) => {
             const n = index + 1;
             const state = n < activeStep ? "done" : n === activeStep ? "active" : "upcoming";
-            const Icon = meta.icon;
+            const Icon = stepIcons[index];
             return (
-              <div className="flex items-center gap-3 py-1.5" key={meta.label}>
+              <div className="flex items-center gap-3 py-1.5" key={label}>
                 <span
                   className={`grid size-8 shrink-0 place-items-center rounded-full border transition-colors duration-300 ${
                     state === "done"
@@ -222,7 +197,7 @@ export function EstimateQuiz() {
                     state === "upcoming" ? "text-white/30" : "text-white/85"
                   }`}
                 >
-                  {meta.label}
+                  {label}
                 </span>
               </div>
             );
@@ -230,7 +205,7 @@ export function EstimateQuiz() {
         </div>
 
         <p className="relative text-[12px] text-white/40 leading-relaxed">
-          A personal reply within 24h, no commitment.
+          {t.replyNote}
         </p>
       </div>
 
@@ -242,17 +217,16 @@ export function EstimateQuiz() {
               <CheckCircle2 size={30} strokeWidth={1.5} />
             </span>
             <h1 className="mt-6 font-serif font-medium text-3xl tracking-tight">
-              Thank you{form.firstName ? `, ${form.firstName}` : ""}!
+              {t.thankYou}{form.firstName ? `, ${form.firstName}` : ""}!
             </h1>
             <p className="mt-4 max-w-sm text-[15px] text-ink/65 leading-relaxed">
-              Your estimate request has been received. Our team is reviewing
-              it and will get back to you within 24h, no commitment.
+              {t.receivedMessage}
             </p>
             <a
               className="mt-8 inline-flex bg-linear-to-br from-gold to-gold-dark px-8 py-3.5 font-bold text-navy text-xs uppercase tracking-wide transition-opacity hover:opacity-90"
               href="/"
             >
-              Back to home
+              {t.backToHome}
             </a>
           </div>
         ) : (
@@ -260,7 +234,7 @@ export function EstimateQuiz() {
             <div className="mb-6 shrink-0 lg:hidden">
               <div className="flex items-center justify-between text-[11px] text-ink/45 uppercase tracking-[0.16em]">
                 <span>
-                  Step {step} / {TOTAL_STEPS}
+                  {t.stepWord} {step} / {TOTAL_STEPS}
                 </span>
                 <span>{Math.round((step / TOTAL_STEPS) * 100)}%</span>
               </div>
@@ -277,12 +251,12 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Your details
+                    {t.step1.eyebrow}
                   </p>
-                  <h1 className={titleClass}>So we can get back to you.</h1>
+                  <h1 className={titleClass}>{t.step1.title}</h1>
                   <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
-                      <label className={labelClass}>First name</label>
+                      <label className={labelClass}>{t.step1.firstName}</label>
                       <input
                         className={inputClass}
                         onChange={(e) => update("firstName", e.target.value)}
@@ -291,7 +265,7 @@ export function EstimateQuiz() {
                       />
                     </div>
                     <div>
-                      <label className={labelClass}>Last name</label>
+                      <label className={labelClass}>{t.step1.lastName}</label>
                       <input
                         className={inputClass}
                         onChange={(e) => update("lastName", e.target.value)}
@@ -300,17 +274,17 @@ export function EstimateQuiz() {
                       />
                     </div>
                     <div>
-                      <label className={labelClass}>Phone / WhatsApp</label>
+                      <label className={labelClass}>{t.step1.phone}</label>
                       <input
                         className={inputClass}
                         onChange={(e) => update("phone", e.target.value)}
-                        placeholder="+212 6 00 00 00 00"
+                        placeholder="+212 7 06 08 94 88"
                         type="tel"
                         value={form.phone}
                       />
                     </div>
                     <div>
-                      <label className={labelClass}>Email</label>
+                      <label className={labelClass}>{t.step1.email}</label>
                       <input
                         className={inputClass}
                         onChange={(e) => update("email", e.target.value)}
@@ -327,29 +301,32 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Your property
+                    {t.step2.eyebrow}
                   </p>
-                  <h1 className={titleClass}>What type of property do you own?</h1>
+                  <h1 className={titleClass}>{t.step2.title}</h1>
                   <div className="mt-6 grid grid-cols-2 gap-3">
-                    {propertyTypes.map(({ value, icon: Icon }) => (
-                      <button
-                        className={`flex flex-col items-center gap-2.5 border px-6 py-6 transition-colors duration-200 ${
-                          form.propertyType === value
-                            ? "border-gold-dark bg-gold-dark/8"
-                            : "border-ink/12 hover:border-gold-dark/40"
-                        }`}
-                        key={value}
-                        onClick={() => update("propertyType", value)}
-                        type="button"
-                      >
-                        <Icon
-                          className={form.propertyType === value ? "text-gold-dark" : "text-ink/50"}
-                          size={22}
-                          strokeWidth={1.5}
-                        />
-                        <span className="font-medium text-ink text-sm">{value}</span>
-                      </button>
-                    ))}
+                    {t.propertyTypes.map(({ value, label }) => {
+                      const Icon = propertyTypeIcons[value];
+                      return (
+                        <button
+                          className={`flex flex-col items-center gap-2.5 border px-6 py-6 transition-colors duration-200 ${
+                            form.propertyType === value
+                              ? "border-gold-dark bg-gold-dark/8"
+                              : "border-ink/12 hover:border-gold-dark/40"
+                          }`}
+                          key={value}
+                          onClick={() => update("propertyType", value)}
+                          type="button"
+                        >
+                          <Icon
+                            className={form.propertyType === value ? "text-gold-dark" : "text-ink/50"}
+                            size={22}
+                            strokeWidth={1.5}
+                          />
+                          <span className="font-medium text-ink text-sm">{label}</span>
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -358,23 +335,23 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Location
+                    {t.step3.eyebrow}
                   </p>
-                  <h1 className={titleClass}>Where is your property in Marrakech?</h1>
+                  <h1 className={titleClass}>{t.step3.title}</h1>
                   <div className="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
-                    {locations.map((loc) => (
+                    {t.locations.map(({ value, label }) => (
                       <button
-                        className={fieldButtonClass(form.location === loc)}
-                        key={loc}
-                        onClick={() => update("location", loc)}
+                        className={fieldButtonClass(form.location === value)}
+                        key={value}
+                        onClick={() => update("location", value)}
                         type="button"
                       >
                         <MapPin
-                          className={form.location === loc ? "text-gold-dark" : "text-ink/40"}
+                          className={form.location === value ? "text-gold-dark" : "text-ink/40"}
                           size={14}
                           strokeWidth={1.5}
                         />
-                        <span className="text-sm">{loc}</span>
+                        <span className="text-sm">{label}</span>
                       </button>
                     ))}
                   </div>
@@ -385,9 +362,9 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Capacity
+                    {t.step4.eyebrow}
                   </p>
-                  <h1 className={titleClass}>How many bedrooms does it have?</h1>
+                  <h1 className={titleClass}>{t.step4.title}</h1>
                   <div className="mt-6 flex flex-wrap gap-2.5">
                     {bedroomOptions.map((n) => (
                       <button
@@ -411,18 +388,18 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Amenities
+                    {t.step5.eyebrow}
                   </p>
-                  <h1 className={titleClass}>Which amenities does it offer?</h1>
-                  <p className="mt-1.5 text-[13px] text-ink/50">Select all that apply.</p>
+                  <h1 className={titleClass}>{t.step5.title}</h1>
+                  <p className="mt-1.5 text-[13px] text-ink/50">{t.step5.subtitle}</p>
                   <div className="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                    {amenitiesList.map((amenity) => {
-                      const active = form.amenities.includes(amenity);
+                    {t.amenitiesList.map(({ value, label }) => {
+                      const active = form.amenities.includes(value);
                       return (
                         <button
                           className={fieldButtonClass(active)}
-                          key={amenity}
-                          onClick={() => toggleAmenity(amenity)}
+                          key={value}
+                          onClick={() => toggleAmenity(value)}
                           type="button"
                         >
                           <span
@@ -432,7 +409,7 @@ export function EstimateQuiz() {
                           >
                             {active && <Check size={12} strokeWidth={2.5} />}
                           </span>
-                          <span className="text-sm">{amenity}</span>
+                          <span className="text-sm">{label}</span>
                         </button>
                       );
                     })}
@@ -444,23 +421,23 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Current situation
+                    {t.step6.eyebrow}
                   </p>
-                  <h1 className={titleClass}>What's the property's current status?</h1>
+                  <h1 className={titleClass}>{t.step6.title}</h1>
                   <div className="mt-6 flex flex-col gap-2.5">
-                    {statusOptions.map((option) => (
+                    {t.statusOptions.map(({ value, label }) => (
                       <button
-                        className={fieldButtonClass(form.status === option)}
-                        key={option}
-                        onClick={() => update("status", option)}
+                        className={fieldButtonClass(form.status === value)}
+                        key={value}
+                        onClick={() => update("status", value)}
                         type="button"
                       >
                         <span
                           className={`size-2 shrink-0 rounded-full ${
-                            form.status === option ? "bg-gold-dark" : "bg-ink/20"
+                            form.status === value ? "bg-gold-dark" : "bg-ink/20"
                           }`}
                         />
-                        <span className="text-sm">{option}</span>
+                        <span className="text-sm">{label}</span>
                       </button>
                     ))}
                   </div>
@@ -471,23 +448,23 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Your goal
+                    {t.step7.eyebrow}
                   </p>
-                  <h1 className={titleClass}>What matters most to you?</h1>
+                  <h1 className={titleClass}>{t.step7.title}</h1>
                   <div className="mt-6 flex flex-col gap-2.5">
-                    {goalOptions.map((option) => (
+                    {t.goalOptions.map(({ value, label }) => (
                       <button
-                        className={fieldButtonClass(form.goal === option)}
-                        key={option}
-                        onClick={() => update("goal", option)}
+                        className={fieldButtonClass(form.goal === value)}
+                        key={value}
+                        onClick={() => update("goal", value)}
                         type="button"
                       >
                         <span
                           className={`size-2 shrink-0 rounded-full ${
-                            form.goal === option ? "bg-gold-dark" : "bg-ink/20"
+                            form.goal === value ? "bg-gold-dark" : "bg-ink/20"
                           }`}
                         />
-                        <span className="text-sm">{option}</span>
+                        <span className="text-sm">{label}</span>
                       </button>
                     ))}
                   </div>
@@ -498,30 +475,31 @@ export function EstimateQuiz() {
                 <div>
                   <p className={eyebrowClass}>
                     <span className="h-px w-6 bg-gold-dark" />
-                    Last step
+                    {t.step8.eyebrow}
                   </p>
-                  <h1 className={titleClass}>Anything else to add?</h1>
+                  <h1 className={titleClass}>{t.step8.title}</h1>
                   <textarea
                     className={`${inputClass} mt-5 min-h-20 resize-none`}
                     onChange={(e) => update("message", e.target.value)}
-                    placeholder="Optional — anything that could help us prepare your estimate."
+                    placeholder={t.step8.placeholder}
                     value={form.message}
                   />
 
                   <div className="mt-5 space-y-1.5 border border-ink/10 bg-sand/25 p-4 text-[13px]">
                     <p className="mb-1.5 font-semibold text-[11px] text-ink/45 uppercase tracking-[0.16em]">
-                      Summary
+                      {t.step8.summary}
                     </p>
                     <p className="text-ink/70">
-                      {form.propertyType} · {form.bedrooms} bed · {form.location}
+                      {labelFor(t.propertyTypes, form.propertyType)} · {form.bedrooms}{" "}
+                      {t.step8.bedSuffix} · {labelFor(t.locations, form.location)}
                     </p>
-                    <p className="text-ink/70">{form.status}</p>
-                    <p className="text-ink/70">{form.goal}</p>
+                    <p className="text-ink/70">{labelFor(t.statusOptions, form.status)}</p>
+                    <p className="text-ink/70">{labelFor(t.goalOptions, form.goal)}</p>
                   </div>
 
                   {submitEstimate.isError && (
                     <p className="mt-3 text-[13px] text-red-600">
-                      Something went wrong. Check your details and try again.
+                      {t.step8.errorMessage}
                     </p>
                   )}
                 </div>
@@ -537,7 +515,7 @@ export function EstimateQuiz() {
                 type="button"
               >
                 <ArrowLeft size={16} strokeWidth={1.5} />
-                Back
+                {t.back}
               </button>
 
               {step < TOTAL_STEPS ? (
@@ -547,7 +525,7 @@ export function EstimateQuiz() {
                   onClick={() => setStep((s) => Math.min(TOTAL_STEPS, s + 1))}
                   type="button"
                 >
-                  Continue
+                  {t.continue}
                   <ArrowRight size={16} strokeWidth={1.5} />
                 </button>
               ) : (
@@ -557,7 +535,7 @@ export function EstimateQuiz() {
                   onClick={handleSubmit}
                   type="button"
                 >
-                  {submitEstimate.isPending ? "Sending..." : "Send my request"}
+                  {submitEstimate.isPending ? t.sending : t.send}
                 </button>
               )}
             </div>

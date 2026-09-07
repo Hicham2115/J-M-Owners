@@ -1,0 +1,38 @@
+export const propertyBrowser = {
+  en: {
+    typeLabels: {
+      All: "All",
+      Villa: "Villa",
+      Apartment: "Apartment",
+      Riad: "Riad",
+    },
+    pool: "Pool",
+    minBeds: "3+ beds",
+    filters: "Filters",
+    propertySingular: "property",
+    propertyPlural: "properties",
+    inCollection: "in the collection",
+    sortedByRelevance: "Sorted by relevance",
+    noMatch: "No properties match these filters yet.",
+    topRated: "Top rated",
+    saveToFavourites: "Save to favourites",
+  },
+  fr: {
+    typeLabels: {
+      All: "Toutes",
+      Villa: "Villa",
+      Apartment: "Appartement",
+      Riad: "Riad",
+    },
+    pool: "Piscine",
+    minBeds: "3 chambres et +",
+    filters: "Filtres",
+    propertySingular: "propriété",
+    propertyPlural: "propriétés",
+    inCollection: "dans la collection",
+    sortedByRelevance: "Triées par pertinence",
+    noMatch: "Aucune propriété ne correspond à ces filtres pour le moment.",
+    topRated: "Top noté",
+    saveToFavourites: "Ajouter aux favoris",
+  },
+} as const;

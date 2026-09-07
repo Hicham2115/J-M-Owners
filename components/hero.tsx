@@ -1,4 +1,8 @@
+"use client";
+
 import { CalendarDays, CirclePlay, House, MapPin, Star } from "lucide-react";
+import { useDict } from "@/lib/i18n/context";
+import { hero } from "@/lib/i18n/dictionaries/hero";
 
 const proof = [
   { icon: House, value: "120+", label: "Properties managed" },
@@ -8,6 +12,7 @@ const proof = [
 ];
 
 export function Hero() {
+  const t = useDict(hero);
   return (
     <section
       className="relative isolate flex min-h-160 flex-col overflow-hidden bg-navy px-5 pt-36 pb-16 text-white sm:px-8 sm:pt-40 md:pt-44 lg:min-h-200 lg:px-12 lg:pb-20"
@@ -22,16 +27,16 @@ export function Hero() {
       />
       <div className="max-w-2xl">
         <p className="mb-4 font-bold text-gold text-xs uppercase tracking-[0.2em] sm:text-sm">
-          Property management in Morocco
+          {t.eyebrow}
         </p>
         <h1 className="font-serif font-semibold text-5xl leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
-          Your Property.
+          {t.titleLine1}
           <br />
-          Our Expertise<span className="text-gold">.</span>
+          {t.titleLine2}
+          <span className="text-gold">.</span>
         </h1>
         <p className="mt-7 mb-8 max-w-xl text-base leading-relaxed sm:text-lg lg:text-lg">
-          We take care of everything: bookings, guests, cleaning, maintenance
-          and protection — while maximizing your rental income.
+          {t.description}
         </p>
         <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
           <a
@@ -39,13 +44,13 @@ export function Hero() {
             href="/estimation"
           >
             <CalendarDays size={20} />
-            Estimation Gratuite de Revenus
+            {t.ctaEstimate}
           </a>
           <a
             className="inline-flex min-h-14 items-center justify-center gap-3 rounded-sm border border-white/60 bg-black/25 px-6 font-bold text-sm uppercase tracking-wide transition-transform hover:-translate-y-0.5"
             href="#services"
           >
-            View Our Services
+            {t.ctaServices}
           </a>
         </div>
       </div>
