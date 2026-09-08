@@ -22,7 +22,7 @@ export function CollectionsHero() {
         fill
         priority
         sizes="100vw"
-        src="/images/hero.png"
+        src="/images/hero.jpg"
       />
       <div className="absolute inset-0 bg-linear-to-b from-navy/80 via-navy/75 to-navy" />
       <div className="motif-zellige absolute inset-0 opacity-[0.08]" />

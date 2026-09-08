@@ -19,10 +19,10 @@ export function Hero() {
       id="home"
     >
       <div
-        className="-z-10 absolute inset-0 bg-[url(/images/hero.png)] bg-cover bg-center"
+        className="-z-10 absolute inset-0 bg-[url(/images/hero.jpg)] bg-cover bg-center"
         style={{
           backgroundImage:
-            "linear-gradient(90deg, rgba(2,11,22,.94) 0%, rgba(3,12,22,.68) 37%, rgba(3,12,22,.16) 75%), linear-gradient(0deg, rgba(2,12,24,.37), rgba(2,12,24,.12)), url(/images/hero.png)",
+            "linear-gradient(90deg, rgba(2,11,22,.94) 0%, rgba(3,12,22,.68) 37%, rgba(3,12,22,.16) 75%), linear-gradient(0deg, rgba(2,12,24,.37), rgba(2,12,24,.12)), url(/images/hero.jpg)",
         }}
       />
       <div className="max-w-2xl">
