@@ -4,7 +4,7 @@ export const solution = {
     titlePrefix: "One partner.",
     titleHighlight: "Everything managed.",
     description:
-      "We manage your property from A to Z with professionalism, transparency and absolute care.",
+      "We manage your property in Marrakech from A to Z with professionalism, transparency and absolute care.",
     items: [
       {
         title: "More bookings",
@@ -22,10 +22,10 @@ export const solution = {
       },
     ],
     gallery: [
-      { alt: "Living room in a J&M-managed apartment" },
-      { alt: "Dining area in a J&M-managed apartment" },
-      { alt: "Lounge area in a J&M-managed apartment" },
-      { alt: "Living room media wall in a J&M-managed apartment" },
+      { alt: "Living room in a J&M-managed apartment in Marrakech" },
+      { alt: "Dining area in a J&M-managed apartment in Marrakech" },
+      { alt: "Lounge area in a J&M-managed apartment in Marrakech" },
+      { alt: "Living room media wall in a J&M-managed apartment in Marrakech" },
     ],
   },
   fr: {
@@ -33,7 +33,7 @@ export const solution = {
     titlePrefix: "Un seul partenaire.",
     titleHighlight: "Tout est géré.",
     description:
-      "Nous gérons votre bien de A à Z avec professionnalisme, transparence et un soin absolu.",
+      "Nous gérons votre bien à Marrakech de A à Z avec professionnalisme, transparence et un soin absolu.",
     items: [
       {
         title: "Plus de réservations",
@@ -51,10 +51,10 @@ export const solution = {
       },
     ],
     gallery: [
-      { alt: "Salon d'un appartement géré par J&M" },
-      { alt: "Salle à manger d'un appartement géré par J&M" },
-      { alt: "Espace salon d'un appartement géré par J&M" },
-      { alt: "Mur multimédia du salon d'un appartement géré par J&M" },
+      { alt: "Salon d'un appartement géré par J&M à Marrakech" },
+      { alt: "Salle à manger d'un appartement géré par J&M à Marrakech" },
+      { alt: "Espace salon d'un appartement géré par J&M à Marrakech" },
+      { alt: "Mur multimédia du salon d'un appartement géré par J&M à Marrakech" },
     ],
   },
 } as const;

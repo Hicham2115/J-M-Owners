@@ -4,7 +4,7 @@ export const ownerChallenge = {
     titlePrefix: "Owning a property shouldn’t feel like a",
     titleHighlight: "second job",
     description:
-      "Between guest communication, bookings, cleaning, maintenance, platforms and emergencies, managing a rental property can quickly become overwhelming.",
+      "Between guest communication, bookings, cleaning, maintenance, platforms and emergencies, managing a rental property in Marrakech can quickly become overwhelming.",
     items: [
       { label: "Empty calendar" },
       { label: "Guest communication" },
@@ -21,7 +21,7 @@ export const ownerChallenge = {
     titlePrefix: "Posséder un bien ne devrait pas ressembler à un",
     titleHighlight: "second travail",
     description:
-      "Entre la communication avec les voyageurs, les réservations, le ménage, l'entretien, les plateformes et les urgences, gérer un bien locatif peut vite devenir accablant.",
+      "Entre la communication avec les voyageurs, les réservations, le ménage, l'entretien, les plateformes et les urgences, gérer un bien locatif à Marrakech peut vite devenir accablant.",
     items: [
       { label: "Calendrier vide" },
       { label: "Communication avec les voyageurs" },

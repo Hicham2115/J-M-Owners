@@ -1,7 +1,7 @@
 export const testimonials = {
   en: {
     eyebrow: "Testimonials",
-    headingBefore: "Owners who handed us",
+    headingBefore: "Marrakech owners who handed us",
     headingHighlight: "the keys",
     reviewsLabel: "reviews",
     verifiedOwner: "Verified owner",
@@ -47,7 +47,7 @@ export const testimonials = {
   },
   fr: {
     eyebrow: "Témoignages",
-    headingBefore: "Des propriétaires qui nous ont confié",
+    headingBefore: "Des propriétaires à Marrakech qui nous ont confié",
     headingHighlight: "les clés",
     reviewsLabel: "avis",
     verifiedOwner: "Propriétaire vérifié",

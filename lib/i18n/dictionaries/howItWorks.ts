@@ -4,7 +4,7 @@ export const howItWorks = {
     titleLine1: "A simple process.",
     titleLine2: "Outstanding results.",
     description:
-      "From first contact to your first payout, here’s exactly what to expect when you work with us.",
+      "From first contact to your first payout, here’s exactly what to expect when you work with us in Marrakech.",
     stepLabel: "Step",
     items: [
       {
@@ -33,7 +33,7 @@ export const howItWorks = {
     titleLine1: "Un processus simple.",
     titleLine2: "Des résultats exceptionnels.",
     description:
-      "Du premier contact à votre premier versement, voici exactement à quoi vous attendre en travaillant avec nous.",
+      "Du premier contact à votre premier versement, voici exactement à quoi vous attendre en travaillant avec nous à Marrakech.",
     stepLabel: "Étape",
     items: [
       {

@@ -1,7 +1,7 @@
 export const trackRecord = {
   en: {
     eyebrow: "The reality for absentee owners",
-    titlePrefix: "Your villa sitting empty is costing you",
+    titlePrefix: "Your villa in Marrakech sitting empty is costing you",
     titleHighlight: "more than you think",
     badgeLabel: "On average",
     statValue: "8/12",
@@ -29,7 +29,7 @@ export const trackRecord = {
   },
   fr: {
     eyebrow: "La réalité des propriétaires absents",
-    titlePrefix: "Une villa qui reste vide vous coûte",
+    titlePrefix: "Une villa à Marrakech qui reste vide vous coûte",
     titleHighlight: "plus que vous ne le pensez",
     badgeLabel: "En moyenne",
     statValue: "8/12",
