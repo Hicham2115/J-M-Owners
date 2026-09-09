@@ -63,8 +63,15 @@ export const estimateQuiz = {
       agencyShare: "Concierge agency share (35–40%)",
       agencyNote:
         "The agency's share covers cleaning, maintenance, and full day-to-day management of the property.",
+      nightlyRatesTitle: "Estimated nightly rate by season",
+      night: "night",
+      lowSeason: "Low season",
+      highSeason: "High season",
+      peakSeason: "Peak season",
       revenueDisclaimer:
         "Indicative estimate based on the Marrakech market. A sales advisor is now reviewing your file to confirm a precise figure.",
+      accurateNumberNote:
+        "Want a more accurate number? Our team will contact you to refine this estimate for your property.",
     },
     propertyTypes: [
       { value: "Villa", label: "Villa" },
@@ -175,8 +182,15 @@ export const estimateQuiz = {
       agencyShare: "Part de l'agence de conciergerie (35–40%)",
       agencyNote:
         "Cette part couvre le ménage, la maintenance et la gestion complète du bien au quotidien.",
+      nightlyRatesTitle: "Tarif nuitée estimé par saison",
+      night: "nuit",
+      lowSeason: "Basse saison",
+      highSeason: "Haute saison",
+      peakSeason: "Très haute saison",
       revenueDisclaimer:
         "Estimation indicative basée sur le marché de Marrakech. Un commercial étudie actuellement votre dossier pour vous confirmer un chiffre précis.",
+      accurateNumberNote:
+        "Vous souhaitez un chiffre plus précis ? Notre équipe vous contactera pour affiner cette estimation pour votre bien.",
     },
     propertyTypes: [
       { value: "Villa", label: "Villa" },

@@ -8,6 +8,8 @@ const AGENCY_SHARE_LOW = 0.35;
 const AGENCY_SHARE_HIGH = 0.4;
 const OCCUPANCY_RATE = 0.6;
 const NIGHTS_PER_MONTH = 30 * OCCUPANCY_RATE;
+// Peak season (holidays, festivals) charges above the regular high-season rate.
+const PEAK_SEASON_MULTIPLIER = 1.35;
 
 // Avg nightly rate range (MAD) by property type and bedroom count.
 const BASE_NIGHTLY_RATE: Record<PropertyType, Record<string, [number, number]>> = {
@@ -70,6 +72,9 @@ export interface RevenueEstimate {
   ownerHigh: number;
   agencyLow: number;
   agencyHigh: number;
+  nightlyLowSeason: number;
+  nightlyHighSeason: number;
+  nightlyPeakSeason: number;
 }
 
 export function estimateMonthlyRevenue({
@@ -88,6 +93,9 @@ export function estimateMonthlyRevenue({
   const monthlyLow = roundToHundred(nightlyLow * locationMultiplier * amenityBoost * NIGHTS_PER_MONTH);
   const monthlyHigh = roundToHundred(nightlyHigh * locationMultiplier * amenityBoost * NIGHTS_PER_MONTH);
 
+  const adjustedNightlyLow = nightlyLow * locationMultiplier * amenityBoost;
+  const adjustedNightlyHigh = nightlyHigh * locationMultiplier * amenityBoost;
+
   return {
     monthlyLow,
     monthlyHigh,
@@ -95,6 +103,9 @@ export function estimateMonthlyRevenue({
     ownerHigh: roundToHundred(monthlyHigh * OWNER_SHARE),
     agencyLow: roundToHundred(monthlyLow * AGENCY_SHARE_LOW),
     agencyHigh: roundToHundred(monthlyHigh * AGENCY_SHARE_HIGH),
+    nightlyLowSeason: roundToHundred(adjustedNightlyLow),
+    nightlyHighSeason: roundToHundred(adjustedNightlyHigh),
+    nightlyPeakSeason: roundToHundred(adjustedNightlyHigh * PEAK_SEASON_MULTIPLIER),
   };
 }
 

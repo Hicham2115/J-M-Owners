@@ -110,6 +110,7 @@ export function BookingCard({
             {formatEuro(pricing.peak)}/{t.night}
           </span>
         </div>
+        <p className="mt-1 text-[12px] text-ink/45 leading-relaxed">{t.accurateNumberNote}</p>
       </div>
 
       <div className="border-gold-dark/30 border-t border-dashed px-6 pt-5 pb-6">

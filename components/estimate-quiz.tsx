@@ -109,6 +109,9 @@ function buildMessage(form: FormState) {
     lines.push(
       `Estimated monthly revenue: ${revenue.monthlyLow}-${revenue.monthlyHigh} MAD (owner share 60%: ${revenue.ownerLow}-${revenue.ownerHigh} MAD)`,
     );
+    lines.push(
+      `Estimated nightly rate: low season ${revenue.nightlyLowSeason} MAD, high season ${revenue.nightlyHighSeason} MAD, peak season ${revenue.nightlyPeakSeason} MAD`,
+    );
   }
   if (form.message.trim()) lines.push(`Details: ${form.message.trim()}`);
   return lines.join("\n");
@@ -254,7 +257,7 @@ export function EstimateQuiz() {
               </div>
             </div>
 
-            <div className="flex flex-1 flex-col justify-center overflow-y-auto">
+            <div className="flex flex-1 flex-col justify-start overflow-y-auto py-1">
               {step === 1 && (
                 <div>
                   <p className={eyebrowClass}>
@@ -513,8 +516,45 @@ export function EstimateQuiz() {
                       <p className="mt-2.5 text-[12px] text-ink/50 leading-relaxed">
                         {t.step8.agencyNote}
                       </p>
+
+                      <div className="mt-3.5 space-y-1.5 border-ink/10 border-t pt-3.5 text-[13px]">
+                        <p className="mb-1 font-semibold text-[11px] text-ink/45 uppercase tracking-[0.16em]">
+                          {t.step8.nightlyRatesTitle}
+                        </p>
+                        <p className="flex items-center justify-between text-ink/70">
+                          <span className="flex items-center gap-2">
+                            <span className="size-1.5 rounded-full bg-emerald-500/70" />
+                            {t.step8.lowSeason}
+                          </span>
+                          <span className="font-semibold text-ink">
+                            {revenue.nightlyLowSeason} MAD/{t.step8.night}
+                          </span>
+                        </p>
+                        <p className="flex items-center justify-between text-ink/70">
+                          <span className="flex items-center gap-2">
+                            <span className="size-1.5 rounded-full bg-gold-dark/70" />
+                            {t.step8.highSeason}
+                          </span>
+                          <span className="font-semibold text-ink">
+                            {revenue.nightlyHighSeason} MAD/{t.step8.night}
+                          </span>
+                        </p>
+                        <p className="flex items-center justify-between text-ink/70">
+                          <span className="flex items-center gap-2">
+                            <span className="size-1.5 rounded-full bg-orange-700/70" />
+                            {t.step8.peakSeason}
+                          </span>
+                          <span className="font-semibold text-ink">
+                            {revenue.nightlyPeakSeason} MAD/{t.step8.night}
+                          </span>
+                        </p>
+                      </div>
+
                       <p className="mt-2.5 border-ink/10 border-t pt-2.5 text-[12px] text-ink/60 leading-relaxed">
                         {t.step8.revenueDisclaimer}
+                      </p>
+                      <p className="mt-1.5 text-[12px] text-gold-dark leading-relaxed">
+                        {t.step8.accurateNumberNote}
                       </p>
                     </div>
                   )}

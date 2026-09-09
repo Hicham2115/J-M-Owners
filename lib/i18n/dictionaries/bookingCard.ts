@@ -12,6 +12,8 @@ export const bookingCard = {
     lowSeason: "Low season",
     highSeason: "High season",
     peakSeason: "Peak season",
+    accurateNumberNote:
+      "Prices are indicative. For an exact quote, our team will contact you.",
     whatsappMessage:
       "Hi, I'm interested in {name} on J&M Housing. Could you give me more information on availability?",
     bookViaWhatsapp: "Book via WhatsApp",
@@ -31,6 +33,8 @@ export const bookingCard = {
     lowSeason: "Basse saison",
     highSeason: "Haute saison",
     peakSeason: "Très haute saison",
+    accurateNumberNote:
+      "Prix indicatifs. Pour un devis exact, notre équipe vous contactera.",
     whatsappMessage:
       "Bonjour, je suis intéressé(e) par {name} sur J&M Housing. Pourriez-vous me donner plus d'informations sur les disponibilités ?",
     bookViaWhatsapp: "Réserver via WhatsApp",
