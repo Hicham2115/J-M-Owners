@@ -15,7 +15,7 @@ export const estimateQuiz = {
     ],
     thankYou: "Thank you",
     receivedMessage:
-      "Your estimate request has been received. Our team is reviewing it and will get back to you within 24h, no commitment.",
+      "Your estimate request has been received. A sales advisor is reviewing your file and will get back to you within 24h, no commitment.",
     backToHome: "Back to home",
     step1: {
       eyebrow: "Your details",
@@ -57,6 +57,14 @@ export const estimateQuiz = {
       summary: "Summary",
       bedSuffix: "bed",
       errorMessage: "Something went wrong. Check your details and try again.",
+      revenueTitle: "Estimated rental revenue",
+      perMonth: "/ month",
+      ownerShare: "Your share (60%)",
+      agencyShare: "Concierge agency share (35–40%)",
+      agencyNote:
+        "The agency's share covers cleaning, maintenance, and full day-to-day management of the property.",
+      revenueDisclaimer:
+        "Indicative estimate based on the Marrakech market. A sales advisor is now reviewing your file to confirm a precise figure.",
     },
     propertyTypes: [
       { value: "Villa", label: "Villa" },
@@ -119,7 +127,7 @@ export const estimateQuiz = {
     ],
     thankYou: "Merci",
     receivedMessage:
-      "Votre demande d'estimation a bien été reçue. Notre équipe l'étudie et revient vers vous sous 24h, sans engagement.",
+      "Votre demande d'estimation a bien été reçue. Un commercial étudie votre dossier et revient vers vous sous 24h, sans engagement.",
     backToHome: "Retour à l'accueil",
     step1: {
       eyebrow: "Vos coordonnées",
@@ -161,6 +169,14 @@ export const estimateQuiz = {
       summary: "Récapitulatif",
       bedSuffix: "ch.",
       errorMessage: "Une erreur est survenue. Vérifiez vos coordonnées et réessayez.",
+      revenueTitle: "Revenu locatif estimé",
+      perMonth: "/ mois",
+      ownerShare: "Votre part (60%)",
+      agencyShare: "Part de l'agence de conciergerie (35–40%)",
+      agencyNote:
+        "Cette part couvre le ménage, la maintenance et la gestion complète du bien au quotidien.",
+      revenueDisclaimer:
+        "Estimation indicative basée sur le marché de Marrakech. Un commercial étudie actuellement votre dossier pour vous confirmer un chiffre précis.",
     },
     propertyTypes: [
       { value: "Villa", label: "Villa" },

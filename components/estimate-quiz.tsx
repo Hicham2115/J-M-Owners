@@ -20,6 +20,7 @@ import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 import logo from "@/app/assets/logo.png";
 import { useSubmitEstimateRequest } from "@/hooks/use-contact-form";
+import { estimateMonthlyRevenue, formatMAD } from "@/lib/estimate-revenue";
 import { useDict } from "@/lib/i18n/context";
 import { estimateQuiz } from "@/lib/i18n/dictionaries/estimateQuiz";
 
@@ -103,6 +104,12 @@ function buildMessage(form: FormState) {
     `Current status: ${form.status}`,
     `Main goal: ${form.goal}`,
   ];
+  const revenue = estimateMonthlyRevenue(form);
+  if (revenue) {
+    lines.push(
+      `Estimated monthly revenue: ${revenue.monthlyLow}-${revenue.monthlyHigh} MAD (owner share 60%: ${revenue.ownerLow}-${revenue.ownerHigh} MAD)`,
+    );
+  }
   if (form.message.trim()) lines.push(`Details: ${form.message.trim()}`);
   return lines.join("\n");
 }
@@ -156,6 +163,7 @@ export function EstimateQuiz() {
   }
 
   const activeStep = done ? TOTAL_STEPS + 1 : step;
+  const revenue = estimateMonthlyRevenue(form);
 
   return (
     <div className="grid h-152 max-h-[calc(100dvh-6rem)] w-full max-w-5xl overflow-hidden border border-ink/10 bg-white shadow-2xl sm:max-h-[calc(100dvh-7.5rem)] lg:grid-cols-[280px_1fr]">
@@ -478,6 +486,39 @@ export function EstimateQuiz() {
                     {t.step8.eyebrow}
                   </p>
                   <h1 className={titleClass}>{t.step8.title}</h1>
+
+                  {revenue && (
+                    <div className="mt-5 border border-gold-dark/25 bg-gold-dark/5 p-4">
+                      <p className="mb-1.5 font-semibold text-[11px] text-ink/45 uppercase tracking-[0.16em]">
+                        {t.step8.revenueTitle}
+                      </p>
+                      <p className="font-serif text-2xl text-ink tracking-tight">
+                        {formatMAD(revenue.monthlyLow)} – {formatMAD(revenue.monthlyHigh)}{" "}
+                        <span className="font-sans text-ink/50 text-sm">{t.step8.perMonth}</span>
+                      </p>
+                      <div className="mt-3 space-y-1 text-[13px]">
+                        <p className="flex items-center justify-between text-ink/70">
+                          <span>{t.step8.ownerShare}</span>
+                          <span className="font-semibold text-ink">
+                            {formatMAD(revenue.ownerLow)} – {formatMAD(revenue.ownerHigh)}
+                          </span>
+                        </p>
+                        <p className="flex items-center justify-between text-ink/70">
+                          <span>{t.step8.agencyShare}</span>
+                          <span className="font-semibold text-ink">
+                            {formatMAD(revenue.agencyLow)} – {formatMAD(revenue.agencyHigh)}
+                          </span>
+                        </p>
+                      </div>
+                      <p className="mt-2.5 text-[12px] text-ink/50 leading-relaxed">
+                        {t.step8.agencyNote}
+                      </p>
+                      <p className="mt-2.5 border-ink/10 border-t pt-2.5 text-[12px] text-ink/60 leading-relaxed">
+                        {t.step8.revenueDisclaimer}
+                      </p>
+                    </div>
+                  )}
+
                   <textarea
                     className={`${inputClass} mt-5 min-h-20 resize-none`}
                     onChange={(e) => update("message", e.target.value)}
